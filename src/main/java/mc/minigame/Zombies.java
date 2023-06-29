@@ -8,6 +8,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,7 +18,6 @@ public class Zombies extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        // Register the Zombies class as an event listener
         getServer().getPluginManager().registerEvents(this, this);
     }
 
@@ -26,14 +26,13 @@ public class Zombies extends JavaPlugin implements Listener {
         event.getPlayer().sendMessage(ChatColor.DARK_PURPLE + "Welcome to the zombie game ;)");
     }
 
-// ...
-
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
 
         // Check if the player right-clicked with a diamond hoe
-        if (event.hasItem() && event.getItem().getType() == Material.DIAMOND_HOE) {
+        if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
+                event.hasItem() && event.getItem().getType() == Material.DIAMOND_HOE) {
 
             // Calculate the crosshair target vector based on the player's location and direction
             Vector direction = player.getEyeLocation().getDirection();
@@ -51,7 +50,6 @@ public class Zombies extends JavaPlugin implements Listener {
                             livingEntity.damage(damageAmount);
                         }
 
-                        // Execute additional actions or effects if needed
                         break;
                     }
                 }
@@ -63,6 +61,4 @@ public class Zombies extends JavaPlugin implements Listener {
             }
         }
     }
-
-
 }
