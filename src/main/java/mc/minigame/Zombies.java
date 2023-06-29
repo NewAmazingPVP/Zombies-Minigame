@@ -25,9 +25,9 @@ public class Zombies extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onIntialize(PlayerJoinEvent event) {
-        event.getPlayer().sendMessage(ChatColor.DARK_PURPLE + "Welcome to the zombie game ;)");
+        event.getPlayer().sendTitle(ChatColor.DARK_PURPLE + "Welcome to the zombie game ;)", "");
         event.getPlayer().getWorld().strikeLightningEffect(event.getPlayer().getLocation());
-        PotionEffect newEffect = new PotionEffect(PotionEffectType.BLINDNESS, 5, 1, false, false);
+        PotionEffect newEffect = new PotionEffect(PotionEffectType.BLINDNESS, 30*20, 1, false, false);
         event.getPlayer().addPotionEffect(newEffect);
     }
 
