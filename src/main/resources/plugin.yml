@@ -1,0 +1,4 @@
+name: Zombies
+version: '1.0'
+main: mc.minigame.Zombies
+api-version: 1.18
