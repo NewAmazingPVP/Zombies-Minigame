@@ -12,6 +12,8 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 public class Zombies extends JavaPlugin implements Listener {
@@ -24,6 +26,9 @@ public class Zombies extends JavaPlugin implements Listener {
     @EventHandler
     public void onIntialize(PlayerJoinEvent event) {
         event.getPlayer().sendMessage(ChatColor.DARK_PURPLE + "Welcome to the zombie game ;)");
+        event.getPlayer().getWorld().strikeLightningEffect(event.getPlayer().getLocation());
+        PotionEffect newEffect = new PotionEffect(PotionEffectType.BLINDNESS, 5, 1, false, false);
+        event.getPlayer().addPotionEffect(newEffect);
     }
 
     @EventHandler
@@ -36,7 +41,7 @@ public class Zombies extends JavaPlugin implements Listener {
 
             // Calculate the crosshair target vector based on the player's location and direction
             Vector direction = player.getEyeLocation().getDirection();
-            double range = 100; // Adjust the range as needed
+            double range = 100;
             Location targetLocation = player.getEyeLocation().clone();
 
             for (int i = 0; i < range; i++) {
