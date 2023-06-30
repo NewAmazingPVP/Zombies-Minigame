@@ -15,7 +15,7 @@ public class Zombies extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(this, this);
-        getServer().getPluginManager().registerEvents(new Shoot(), this);
+        getServer().getPluginManager().registerEvents(new Shoot(this), this);
     }
 
     @EventHandler
