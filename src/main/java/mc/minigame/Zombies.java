@@ -1,8 +1,6 @@
 package mc.minigame;
 
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -16,6 +14,8 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
+import java.util.List;
+
 public class Zombies extends JavaPlugin implements Listener {
 
     @Override
@@ -25,10 +25,11 @@ public class Zombies extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onIntialize(PlayerJoinEvent event) {
-        event.getPlayer().sendTitle(ChatColor.DARK_PURPLE + "Welcome to the zombie game ;)", "");
-        event.getPlayer().getWorld().strikeLightningEffect(event.getPlayer().getLocation());
+        Player player = event.getPlayer();
+        player.sendTitle(ChatColor.DARK_PURPLE + "Welcome to the zombie game ;)", "");
+        player.getWorld().strikeLightningEffect(event.getPlayer().getLocation());
         PotionEffect newEffect = new PotionEffect(PotionEffectType.BLINDNESS, 5*20, 1, false, false);
-        event.getPlayer().addPotionEffect(newEffect);
+        player.addPotionEffect(newEffect);
     }
 
     @EventHandler
@@ -51,8 +52,8 @@ public class Zombies extends JavaPlugin implements Listener {
 
                 for (Entity target : player.getWorld().getEntities()) {
                     if ((target.getLocation().getBlock().getX() == targetLocation.getBlock().getX()) && (target.getLocation().getBlock().getZ() == targetLocation.getBlock().getZ())
-                            && (target.getLocation().getBlock().getY() >= targetLocation.getBlock().getY() - 1 &&
-                            target.getLocation().getBlock().getY() <= targetLocation.getBlock().getY() + 2)) {
+                            && (target.getLocation().getBlock().getY() >= targetLocation.getBlock().getY() - (target.getHeight()) &&
+                            target.getLocation().getBlock().getY() <= targetLocation.getBlock().getY() + (target.getHeight()))) {
                         if (target instanceof LivingEntity) {
                             LivingEntity livingEntity = (LivingEntity) target;
                             double damageAmount = 5.0;
@@ -67,6 +68,17 @@ public class Zombies extends JavaPlugin implements Listener {
                 if (targetLocation.getBlock().getType().isSolid()) {
                     break;
                 }
+            }
+        }
+    }
+
+    public void playSoundToNearbyPlayers(Location soundLocation, double radius, Sound sound, float volume, float pitch) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            Location playerLocation = player.getLocation();
+            double distance = soundLocation.distance(playerLocation);
+
+            if (distance <= radius) {
+                player.playSound(soundLocation, sound, volume, pitch);
             }
         }
     }
