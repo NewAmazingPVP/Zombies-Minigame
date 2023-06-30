@@ -27,7 +27,7 @@ public class Zombies extends JavaPlugin implements Listener {
     public void onIntialize(PlayerJoinEvent event) {
         event.getPlayer().sendTitle(ChatColor.DARK_PURPLE + "Welcome to the zombie game ;)", "");
         event.getPlayer().getWorld().strikeLightningEffect(event.getPlayer().getLocation());
-        PotionEffect newEffect = new PotionEffect(PotionEffectType.BLINDNESS, 30*20, 1, false, false);
+        PotionEffect newEffect = new PotionEffect(PotionEffectType.BLINDNESS, 5*20, 1, false, false);
         event.getPlayer().addPotionEffect(newEffect);
     }
 
@@ -39,6 +39,8 @@ public class Zombies extends JavaPlugin implements Listener {
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
                 event.hasItem() && event.getItem().getType() == Material.DIAMOND_HOE) {
 
+            player.playSound(player.getLocation(), "block.mud_bricks.break", 1.0f, 1.0f);
+
             // Calculate the crosshair target vector based on the player's location and direction
             Vector direction = player.getEyeLocation().getDirection();
             double range = 100;
@@ -48,7 +50,9 @@ public class Zombies extends JavaPlugin implements Listener {
                 targetLocation.add(direction);
 
                 for (Entity target : player.getWorld().getEntities()) {
-                    if (target.getLocation().getBlock().equals(targetLocation.getBlock())) {
+                    if ((target.getLocation().getBlock().getX() == targetLocation.getBlock().getX()) && (target.getLocation().getBlock().getZ() == targetLocation.getBlock().getZ())
+                            && (target.getLocation().getBlock().getY() >= targetLocation.getBlock().getY() - 1 &&
+                            target.getLocation().getBlock().getY() <= targetLocation.getBlock().getY() + 2)) {
                         if (target instanceof LivingEntity) {
                             LivingEntity livingEntity = (LivingEntity) target;
                             double damageAmount = 5.0;
