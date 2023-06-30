@@ -1,18 +1,13 @@
 package mc.minigame.variables;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Weapons {
-
-    private double defaultDamageAmount = 5.0;
-    private double defaultCooldown = 1.0;
-    public Map<Player, Long> cooldowns = new HashMap<>();
 
     public List<Material> weaponList = Arrays.asList(
             Material.WOODEN_HOE,
@@ -40,7 +35,7 @@ public class Weapons {
             case NETHERITE_HOE:
                 return 1.0; // 1.0 second
             default:
-                return defaultCooldown;
+                return 0.0;
         }
     }
 
@@ -60,11 +55,13 @@ public class Weapons {
             case NETHERITE_HOE:
                 return 9.0;
             default:
-                return defaultDamageAmount;
+                return 0.0;
         }
     }
 
     public Weapons(){
+
+
 
     }
 }
