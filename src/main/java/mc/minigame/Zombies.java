@@ -7,14 +7,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
-
-import java.util.List;
 
 public class Zombies extends JavaPlugin implements Listener {
 
@@ -24,7 +24,7 @@ public class Zombies extends JavaPlugin implements Listener {
     }
 
     @EventHandler
-    public void onIntialize(PlayerJoinEvent event) {
+    public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         player.sendTitle(ChatColor.DARK_PURPLE + "Welcome to the zombie game ;)", "");
         player.getWorld().strikeLightningEffect(event.getPlayer().getLocation());
@@ -57,9 +57,8 @@ public class Zombies extends JavaPlugin implements Listener {
                         if (target instanceof LivingEntity) {
                             LivingEntity livingEntity = (LivingEntity) target;
                             double damageAmount = 5.0;
-                            livingEntity.damage(damageAmount);
+                            livingEntity.damage(damageAmount, player);
                         }
-
                         break;
                     }
                 }
@@ -82,4 +81,23 @@ public class Zombies extends JavaPlugin implements Listener {
             }
         }
     }
+
+/*    @EventHandler
+    public void onDamage(EntityDamageByEntityEvent event) {
+        Entity entity = event.getEntity();
+        Entity damager = event.getDamager();
+
+        if (!(entity instanceof Player) && damager instanceof Player) {
+            Player damagedPlayer = (Player) entity;
+            Player attackingPlayer = (Player) damager;
+
+            // Check if the attacking player used a hoe as the weapon
+            if (attackingPlayer.getItemInHand().getType() == Material.DIAMOND_HOE) {
+                double totalDamage = event.getFinalDamage();
+                event.setCancelled(true);
+                LivingEntity victim = (LivingEntity) entity;
+                victim.damage(totalDamage, damager);
+            }
+        }
+    }*/
 }
