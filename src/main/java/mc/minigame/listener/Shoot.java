@@ -1,25 +1,26 @@
 package mc.minigame.listener;
 
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.Vector;
+import mc.minigame.variables.Weapons;
 
 public class Shoot implements Listener{
-    @EventHandler(priority = EventPriority.NORMAL)
+
+    Weapons weapons = new Weapons();
+    @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
 
         // Check if the player right-clicked with a diamond hoe
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
-                event.hasItem() && event.getItem().getType() == Material.DIAMOND_HOE) {
+                event.hasItem() && weapons.weaponList.contains(event.getItem().getType())) {
 
             player.playSound(player.getLocation(), "block.mud_bricks.break", 1.0f, 1.0f);
 
