@@ -13,15 +13,10 @@ import org.bukkit.util.Vector;
 import mc.minigame.variables.Weapons;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Shoot implements Listener {
 
     private Weapons weapons = new Weapons();
-    private Map<Player, Long> cooldowns = new HashMap<>();
-    private double defaultDamageAmount = 5.0;
-    private double defaultCooldown = 1.0; // Cooldown in seconds
+
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
@@ -51,7 +46,6 @@ public class Shoot implements Listener {
                 Entity target = getTargetEntityAtLocation(targetLocation);
                 if (target != null) {
                     damageTarget(player, target);
-                    applyCooldown(player);
                     break;
                 }
 
@@ -60,6 +54,9 @@ public class Shoot implements Listener {
                     break;
                 }
             }
+
+            applyCooldown(player);
+            animation(player, player.getItemInHand().getType());
         }
     }
 
@@ -77,64 +74,24 @@ public class Shoot implements Listener {
     }
 
     private void damageTarget(Player player, Entity target) {
-        double damageAmount = calculateDamageAmount(player.getItemInHand().getType());
+        double damageAmount = weapons.calculateDamageAmount(player.getItemInHand().getType());
         ((LivingEntity) target).damage(damageAmount, player);
-    }
-
-    private double calculateDamageAmount(Material weaponType) {
-        // Add custom damage calculation based on the weapon type
-        switch (weaponType) {
-            case WOODEN_HOE:
-                return 4.0;
-            case STONE_HOE:
-                return 5.0;
-            case IRON_HOE:
-                return 6.0;
-            case GOLDEN_HOE:
-                return 7.0;
-            case DIAMOND_HOE:
-                return 8.0;
-            case NETHERITE_HOE:
-                return 9.0;
-            default:
-                return defaultDamageAmount;
-        }
     }
 
     private boolean hasCooldown(Player player) {
         long currentTime = System.currentTimeMillis();
-        if (cooldowns.containsKey(player)) {
-            long cooldownEndTime = cooldowns.get(player);
+        if (weapons.cooldowns.containsKey(player)) {
+            long cooldownEndTime = weapons.cooldowns.get(player);
             return currentTime < cooldownEndTime;
         }
         return false;
     }
 
     private void applyCooldown(Player player) {
-        double cooldownSeconds = getCooldownDuration(player.getItemInHand().getType());
+        double cooldownSeconds = weapons.getCooldownDuration(player.getItemInHand().getType());
         if (cooldownSeconds > 0) {
             long cooldownEndTime = (long) (System.currentTimeMillis() + (cooldownSeconds * 1000.0));
-            cooldowns.put(player, cooldownEndTime);
-        }
-    }
-
-    private double getCooldownDuration(Material weaponType) {
-        // Add custom cooldown duration based on the weapon type
-        switch (weaponType) {
-            case WOODEN_HOE:
-                return 0.5; // 0.5 seconds
-            case STONE_HOE:
-                return 0.6; // 0.6 seconds
-            case IRON_HOE:
-                return 0.7; // 0.7 seconds
-            case GOLDEN_HOE:
-                return 0.8; // 0.8 seconds
-            case DIAMOND_HOE:
-                return 0.9; // 0.9 seconds
-            case NETHERITE_HOE:
-                return 1.0; // 1.0 second
-            default:
-                return defaultCooldown;
+            weapons.cooldowns.put(player, cooldownEndTime);
         }
     }
 
@@ -145,5 +102,10 @@ public class Shoot implements Listener {
     private void decreaseArrow(Player player){
         ItemStack arrow = new ItemStack(Material.ARROW, 1);
         player.getInventory().removeItem(arrow); ;
+    }
+
+    public void animation(Player player, Material material) {
+        double cooldownSeconds = weapons.getCooldownDuration(player.getItemInHand().getType()) * 20;
+        player.setCooldown(material, (int) cooldownSeconds);
     }
 }
