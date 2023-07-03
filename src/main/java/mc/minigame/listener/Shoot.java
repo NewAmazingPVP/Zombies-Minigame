@@ -1,10 +1,7 @@
 package mc.minigame.listener;
 
 import mc.minigame.Zombies;
-import org.bukkit.Bukkit;
-import org.bukkit.EntityEffect;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -38,16 +35,21 @@ public class Shoot implements Listener {
 
         // Check if the player right-clicked with a diamond hoe
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
-                event.hasItem() && weapons.weaponList.contains(event.getItem().getType()) && hasArrow(player)) {
+                event.hasItem() && weapons.weaponList.contains(event.getItem().getType())) {
 
             if (hasCooldown(player)) {
                 // Player is on cooldown
                 return;
             }
 
+            if(!hasArrow(player))
+            {
+                player.sendTitle(ChatColor.DARK_RED + "Out of Ammo!", "");
+                return;
+            }
+
             decreaseArrow(player);
 
-            shootArrow(player);
             player.playSound(player.getLocation(), "block.mud_bricks.break", 1.0f, 1.0f);
 
             // Calculate the crosshair target vector based on the player's location and direction
