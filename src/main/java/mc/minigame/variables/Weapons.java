@@ -47,28 +47,20 @@ public class Weapons {
                 return 1.0; // 1.0 seconds
             case GOLDEN_HOE: // Sig Sauer P320
                 return 0.5; // 0.5 seconds
-
-            // Rifles
             case DIAMOND_HOE: // Bolt-Action Rifle (Remington 700)
                 return 1.2; // 1.2 seconds
             case NETHERITE_HOE: // Semi-Automatic Rifle (AR-15)
                 return 1.5; // 1.5 seconds
-
-            // Shotguns
             case WOODEN_AXE: // Pump-Action Shotgun (Remington 870)
                 return 1.0; // 1.0 seconds
             case STONE_AXE: // Semi-Automatic Shotgun (Benelli M2)
                 return 1.2; // 1.2 seconds
-
-            // Machine Guns
             case IRON_AXE: // Light Machine Gun (M249 SAW)
                 return 1.5; // 1.5 seconds
             case GOLDEN_AXE: // Medium Machine Gun (M240)
                 return 2.0; // 2.0 seconds
             case DIAMOND_AXE: // Heavy Machine Gun (Browning M2)
                 return 2.5; // 2.5 seconds
-
-            // Swords
             case WOODEN_SWORD: // Machete
                 return 0.8; // 0.8 seconds
             case STONE_SWORD: // Katana
@@ -81,8 +73,6 @@ public class Weapons {
                 return 1.5; // 1.5 seconds
             case NETHERITE_SWORD: // Zweihander
                 return 1.8; // 1.8 seconds
-
-            // Shovels
             case WOODEN_SHOVEL: // Derringer
                 return 0.7; // 0.7 seconds
             case STONE_SHOVEL: // Lever-Action Rifle
@@ -112,28 +102,20 @@ public class Weapons {
                 return 12.0 / 3.0;
             case GOLDEN_HOE: // Sig Sauer P320
                 return 6.0 / 3.0;
-
-            // Rifles
             case DIAMOND_HOE: // Bolt-Action Rifle (Remington 700)
                 return 25.0 / 3.0;
             case NETHERITE_HOE: // Semi-Automatic Rifle (AR-15)
                 return 20.0 / 3.0;
-
-            // Shotguns
             case WOODEN_AXE: // Pump-Action Shotgun (Remington 870)
                 return 18.0 / 3.0;
             case STONE_AXE: // Semi-Automatic Shotgun (Benelli M2)
                 return 16.0 / 3.0;
-
-            // Machine Guns
             case IRON_AXE: // Light Machine Gun (M249 SAW)
                 return 10.0 / 3.0;
             case GOLDEN_AXE: // Medium Machine Gun (M240)
                 return 8.0 / 3.0;
             case DIAMOND_AXE: // Heavy Machine Gun (Browning M2)
                 return 35.0 / 3.0;
-
-            // Swords
             case WOODEN_SWORD: // Machete
                 return 12.0 / 3.0;
             case STONE_SWORD: // Katana
@@ -146,8 +128,6 @@ public class Weapons {
                 return 22.0 / 3.0;
             case NETHERITE_SWORD: // Zweihander
                 return 25.0 / 3.0;
-
-            // Shovels
             case WOODEN_SHOVEL: // Derringer
                 return 5.0 / 3.0;
             case STONE_SHOVEL: // Lever-Action Rifle
@@ -166,10 +146,6 @@ public class Weapons {
         }
     }
 
-
     public Weapons(){
-
-
-
     }
 }
