@@ -1,6 +1,8 @@
 package mc.minigame.listener;
 
 import mc.minigame.Zombies;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.*;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
@@ -10,6 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.util.Vector;
 import mc.minigame.variables.Weapons;
@@ -49,6 +52,11 @@ public class Shoot implements Listener {
             }
 
             decreaseArrow(player);
+
+            if (countArrowsInInventory(player) <= 20){
+                TextComponent textComponent = new TextComponent(ChatColor.YELLOW + "You only have " + ChatColor.RED + countArrowsInInventory(player) + ChatColor.YELLOW + " ammos");
+                player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
+            }
 
             player.playSound(player.getLocation(), "block.mud_bricks.break", 1.0f, 1.0f);
 
@@ -124,6 +132,19 @@ public class Shoot implements Listener {
     public void animation(Player player, Material material) {
         double cooldownSeconds = weapons.getCooldownDuration(player.getItemInHand().getType()) * 20;
         player.setCooldown(material, (int) cooldownSeconds);
+    }
+
+    public int countArrowsInInventory(Player player) {
+        int arrowCount = 0;
+        PlayerInventory inventory = player.getInventory();
+
+        for (ItemStack item : inventory.getContents()) {
+            if (item != null && item.getType() == Material.ARROW) {
+                arrowCount += item.getAmount();
+            }
+        }
+
+        return arrowCount;
     }
 
     public void shootArrow(Player player) {
