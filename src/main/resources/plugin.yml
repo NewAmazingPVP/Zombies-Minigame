@@ -6,3 +6,6 @@ commands:
   setmoney:
     description: Set your money
     usage: /setmoney <money>
+  giveset:
+    description: Get your armor
+    usage: /giveset

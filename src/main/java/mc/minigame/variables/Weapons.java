@@ -1,9 +1,8 @@
 package mc.minigame.variables;
 
 import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,6 +31,98 @@ public class Weapons {
             Material.DIAMOND_SHOVEL,
             Material.NETHERITE_SHOVEL
     );
+
+        public static List<Material> getAllArmorTypes() {
+            return Arrays.asList(
+                    Material.LEATHER_BOOTS,
+                    Material.LEATHER_CHESTPLATE,
+                    Material.LEATHER_HELMET,
+                    Material.LEATHER_LEGGINGS,
+                    Material.CHAINMAIL_BOOTS,
+                    Material.CHAINMAIL_CHESTPLATE,
+                    Material.CHAINMAIL_HELMET,
+                    Material.CHAINMAIL_LEGGINGS,
+                    Material.IRON_BOOTS,
+                    Material.IRON_CHESTPLATE,
+                    Material.IRON_HELMET,
+                    Material.IRON_LEGGINGS,
+                    Material.DIAMOND_BOOTS,
+                    Material.DIAMOND_CHESTPLATE,
+                    Material.DIAMOND_HELMET,
+                    Material.DIAMOND_LEGGINGS,
+                    Material.GOLDEN_BOOTS,
+                    Material.GOLDEN_CHESTPLATE,
+                    Material.GOLDEN_HELMET,
+                    Material.GOLDEN_LEGGINGS,
+                    Material.TURTLE_HELMET,
+                    Material.NETHERITE_BOOTS,
+                    Material.NETHERITE_CHESTPLATE,
+                    Material.NETHERITE_HELMET,
+                    Material.NETHERITE_LEGGINGS
+            );
+        }
+
+        public static List<Material> getLeatherArmorTypes() {
+            return new ArrayList<>(List.of(
+                    Material.LEATHER_BOOTS,
+                    Material.LEATHER_CHESTPLATE,
+                    Material.LEATHER_HELMET,
+                    Material.LEATHER_LEGGINGS
+            ));
+        }
+
+        public static List<Material> getChainmailArmorTypes() {
+            return new ArrayList<>(List.of(
+                    Material.CHAINMAIL_BOOTS,
+                    Material.CHAINMAIL_CHESTPLATE,
+                    Material.CHAINMAIL_HELMET,
+                    Material.CHAINMAIL_LEGGINGS
+            ));
+        }
+
+        public static List<Material> getIronArmorTypes() {
+            return new ArrayList<>(List.of(
+                    Material.IRON_BOOTS,
+                    Material.IRON_CHESTPLATE,
+                    Material.IRON_HELMET,
+                    Material.IRON_LEGGINGS
+            ));
+        }
+
+        public static List<Material> getDiamondArmorTypes() {
+            return new ArrayList<>(List.of(
+                    Material.DIAMOND_BOOTS,
+                    Material.DIAMOND_CHESTPLATE,
+                    Material.DIAMOND_HELMET,
+                    Material.DIAMOND_LEGGINGS
+            ));
+        }
+
+        public static List<Material> getGoldenArmorTypes() {
+            return new ArrayList<>(List.of(
+                    Material.GOLDEN_BOOTS,
+                    Material.GOLDEN_CHESTPLATE,
+                    Material.GOLDEN_HELMET,
+                    Material.GOLDEN_LEGGINGS
+            ));
+        }
+
+        public static List<Material> getTurtleArmorTypes() {
+            return new ArrayList<>(List.of(
+                    Material.TURTLE_HELMET
+            ));
+        }
+
+        public static List<Material> getNetheriteArmorTypes() {
+            return new ArrayList<>(List.of(
+                    Material.NETHERITE_BOOTS,
+                    Material.NETHERITE_CHESTPLATE,
+                    Material.NETHERITE_HELMET,
+                    Material.NETHERITE_LEGGINGS
+            ));
+        }
+
+
 
 
     public double getCooldownDuration(Material weaponType) {
