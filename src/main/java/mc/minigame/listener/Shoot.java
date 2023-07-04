@@ -25,9 +25,7 @@ public class Shoot implements Listener {
 
     private Zombies mainPlugin;
 
-    public Shoot(Zombies mainPlugin) {
-        this.mainPlugin = mainPlugin;
-    }
+
     private Weapons weapons = new Weapons();
     public Map<Player, Long> cooldowns = new HashMap<>();
 
@@ -134,7 +132,7 @@ public class Shoot implements Listener {
         player.setCooldown(material, (int) cooldownSeconds);
     }
 
-    public int countArrowsInInventory(Player player) {
+    public static int countArrowsInInventory(Player player) {
         int arrowCount = 0;
         PlayerInventory inventory = player.getInventory();
 

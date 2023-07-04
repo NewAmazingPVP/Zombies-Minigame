@@ -1,5 +1,6 @@
 package mc.minigame;
 
+import mc.minigame.command.MoneySet;
 import mc.minigame.game.DisplayBoard;
 import mc.minigame.game.PlayerMoney;
 import org.bukkit.*;
@@ -14,14 +15,15 @@ import mc.minigame.listener.Shoot;
 import mc.minigame.game.GameStart;
 
 public class Zombies extends JavaPlugin implements Listener {
-
-    GameStart gameStart = new GameStart();
+    public GameStart gameStart = new GameStart();
+    public PlayerMoney playerMoney = new PlayerMoney();
+    public DisplayBoard displayBoard = new DisplayBoard();
 
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(this, this);
-        getServer().getPluginManager().registerEvents(new Shoot(this), this);
-
+        getServer().getPluginManager().registerEvents(new Shoot(), this);
+        getCommand("setmoney").setExecutor(new MoneySet());
     }
 
     @EventHandler

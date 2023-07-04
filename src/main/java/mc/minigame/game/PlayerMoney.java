@@ -5,35 +5,41 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 
 public class PlayerMoney {
-    private HashMap<Player, Integer> playerMap = new HashMap<>();
+    private static HashMap<Player, Integer> playerMap = new HashMap<>();
 
-    public int getCoins(Player player) {
+
+    public static int getCoins(Player player) {
         return playerMap.getOrDefault(player, 0);
     }
 
     public void addCoins(Player player, int amount) {
         int currentCoins = getCoins(player);
         playerMap.put(player, currentCoins + amount);
+        DisplayBoard.updateScores(player);
     }
 
     public void removeCoins(Player player, int amount) {
         int currentCoins = getCoins(player);
         if (currentCoins > amount) {
             playerMap.put(player, currentCoins - amount);
+            DisplayBoard.updateScores(player);
         } else {
             playerMap.remove(player);
+            DisplayBoard.updateScores(player);
         }
     }
 
-    public void setCoins(Player player, int amount) {
+    public static void setCoins(Player player, int amount) {
         if (amount > 0) {
             playerMap.put(player, amount);
+            DisplayBoard.updateScores(player);
         } else {
             playerMap.remove(player);
+            DisplayBoard.updateScores(player);
         }
     }
-    public void clearCoins() {
+
+    public static void clearCoins() {
         playerMap.clear();
     }
-
 }
