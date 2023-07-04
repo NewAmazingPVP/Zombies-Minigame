@@ -17,12 +17,12 @@ public class DisplayBoard {
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         int coins = PlayerMoney.getCoins(player); // Get the number of coins the player has
-        Score coinsScore = objective.getScore(ChatColor.YELLOW + "Coins ");
-        coinsScore.setScore(coins);
+        Score coinsScore = objective.getScore(ChatColor.YELLOW + "Coins: " + ChatColor.GOLD + coins);
+        coinsScore.setScore(0);
 
         int level = 1;
-        Score timeScore = objective.getScore(ChatColor.AQUA + "Level ");
-        timeScore.setScore(level);
+        Score timeScore = objective.getScore(ChatColor.AQUA + "Level: " + ChatColor.GREEN + level);
+        timeScore.setScore(0);
 
         player.setScoreboard(board);
     }
