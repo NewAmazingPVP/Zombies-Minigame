@@ -9,3 +9,9 @@ commands:
   giveset:
     description: Get your armor
     usage: /giveset [armorType]
+  spawnzombie:
+    description: Spawn zombies on map radius
+    usage: /spawnzombie [number of zombies]
+  setTimer:
+    description: Set timer
+    usage: /setTimer

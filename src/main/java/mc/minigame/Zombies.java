@@ -2,6 +2,8 @@ package mc.minigame;
 
 import mc.minigame.command.ArmorSet;
 import mc.minigame.command.MoneySet;
+import mc.minigame.command.TimerCommand;
+import mc.minigame.command.ZombiesSpawn;
 import mc.minigame.game.DisplayBoard;
 import mc.minigame.game.PlayerMoney;
 import mc.minigame.listener.RadiationBypass;
@@ -28,6 +30,8 @@ public class Zombies extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new RadiationBypass(), this);
         getCommand("setmoney").setExecutor(new MoneySet());
         getCommand("giveset").setExecutor(new ArmorSet());
+        getCommand("spawnzombie").setExecutor(new ZombiesSpawn());
+        getCommand("setTimer").setExecutor(new TimerCommand(this));
     }
 
     @EventHandler
