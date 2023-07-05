@@ -41,17 +41,4 @@ public class Zombies extends JavaPlugin implements Listener {
         gameStart.onStart(player);
     }
 
-
-
-    public void playSoundToNearbyPlayers(Location soundLocation, double radius, Sound sound, float volume, float pitch) {
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            Location playerLocation = player.getLocation();
-            double distance = soundLocation.distance(playerLocation);
-
-            if (distance <= radius) {
-                player.playSound(soundLocation, sound, volume, pitch);
-            }
-        }
-    }
-
 }
