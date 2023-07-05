@@ -1,7 +1,5 @@
 package mc.minigame.command;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
 import mc.minigame.variables.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -11,14 +9,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 public class ArmorSet implements CommandExecutor {
 
@@ -33,7 +27,7 @@ public class ArmorSet implements CommandExecutor {
                             Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
-                            meta.setDisplayName(ChatColor.DARK_RED + "Assassin Suit");
+                            meta.setDisplayName(ChatColor.BLUE + "Leather Juggernaut");
                             if (meta != null) {
                                 // Add an armor attribute modifier to the armor
                                 meta.addAttributeModifier(
@@ -56,7 +50,7 @@ public class ArmorSet implements CommandExecutor {
                             Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
-                            meta.setDisplayName("Assassin Suit");
+                            meta.setDisplayName(ChatColor.DARK_RED + "Assassin Suit");
                             if (meta != null) {
                                 // Add an armor attribute modifier to the armor
                                 meta.addAttributeModifier(
@@ -79,7 +73,8 @@ public class ArmorSet implements CommandExecutor {
                             Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
-                            meta.setDisplayName("Netherite Juggernaut");
+                            meta.setDisplayName(ChatColor.MAGIC + "Netherite Juggernaut");
+                            meta.setLore(Collections.singletonList(ChatColor.DARK_PURPLE + "RADIATION PROOF IF FULL SET"));
                             if (meta != null) {
                                 // Add an armor attribute modifier to the armor
                                 meta.addAttributeModifier(
@@ -102,7 +97,7 @@ public class ArmorSet implements CommandExecutor {
                             Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
-                            meta.setDisplayName("Ironman Armor");
+                            meta.setDisplayName(ChatColor.GRAY + "Ironman Armor");
                             if (meta != null) {
                                 // Add an armor attribute modifier to the armor
                                 meta.addAttributeModifier(
@@ -125,7 +120,7 @@ public class ArmorSet implements CommandExecutor {
                             Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
-                            meta.setDisplayName("Killer's Wear");
+                            meta.setDisplayName(ChatColor.GOLD + "King's Wear");
                             if (meta != null) {
                                 // Add an armor attribute modifier to the armor
                                 meta.addAttributeModifier(
