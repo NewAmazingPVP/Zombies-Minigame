@@ -8,4 +8,4 @@ commands:
     usage: /setmoney <money>
   giveset:
     description: Get your armor
-    usage: /giveset
+    usage: /giveset [armorType]
