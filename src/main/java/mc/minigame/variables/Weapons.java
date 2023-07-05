@@ -32,98 +32,6 @@ public class Weapons {
             Material.NETHERITE_SHOVEL
     );
 
-        public static List<Material> getAllArmorTypes() {
-            return Arrays.asList(
-                    Material.LEATHER_BOOTS,
-                    Material.LEATHER_CHESTPLATE,
-                    Material.LEATHER_HELMET,
-                    Material.LEATHER_LEGGINGS,
-                    Material.CHAINMAIL_BOOTS,
-                    Material.CHAINMAIL_CHESTPLATE,
-                    Material.CHAINMAIL_HELMET,
-                    Material.CHAINMAIL_LEGGINGS,
-                    Material.IRON_BOOTS,
-                    Material.IRON_CHESTPLATE,
-                    Material.IRON_HELMET,
-                    Material.IRON_LEGGINGS,
-                    Material.DIAMOND_BOOTS,
-                    Material.DIAMOND_CHESTPLATE,
-                    Material.DIAMOND_HELMET,
-                    Material.DIAMOND_LEGGINGS,
-                    Material.GOLDEN_BOOTS,
-                    Material.GOLDEN_CHESTPLATE,
-                    Material.GOLDEN_HELMET,
-                    Material.GOLDEN_LEGGINGS,
-                    Material.TURTLE_HELMET,
-                    Material.NETHERITE_BOOTS,
-                    Material.NETHERITE_CHESTPLATE,
-                    Material.NETHERITE_HELMET,
-                    Material.NETHERITE_LEGGINGS
-            );
-        }
-
-        public static List<Material> getLeatherArmorTypes() {
-            return new ArrayList<>(List.of(
-                    Material.LEATHER_BOOTS,
-                    Material.LEATHER_CHESTPLATE,
-                    Material.LEATHER_HELMET,
-                    Material.LEATHER_LEGGINGS
-            ));
-        }
-
-        public static List<Material> getChainmailArmorTypes() {
-            return new ArrayList<>(List.of(
-                    Material.CHAINMAIL_BOOTS,
-                    Material.CHAINMAIL_CHESTPLATE,
-                    Material.CHAINMAIL_HELMET,
-                    Material.CHAINMAIL_LEGGINGS
-            ));
-        }
-
-        public static List<Material> getIronArmorTypes() {
-            return new ArrayList<>(List.of(
-                    Material.IRON_BOOTS,
-                    Material.IRON_CHESTPLATE,
-                    Material.IRON_HELMET,
-                    Material.IRON_LEGGINGS
-            ));
-        }
-
-        public static List<Material> getDiamondArmorTypes() {
-            return new ArrayList<>(List.of(
-                    Material.DIAMOND_BOOTS,
-                    Material.DIAMOND_CHESTPLATE,
-                    Material.DIAMOND_HELMET,
-                    Material.DIAMOND_LEGGINGS
-            ));
-        }
-
-        public static List<Material> getGoldenArmorTypes() {
-            return new ArrayList<>(List.of(
-                    Material.GOLDEN_BOOTS,
-                    Material.GOLDEN_CHESTPLATE,
-                    Material.GOLDEN_HELMET,
-                    Material.GOLDEN_LEGGINGS
-            ));
-        }
-
-        public static List<Material> getTurtleArmorTypes() {
-            return new ArrayList<>(List.of(
-                    Material.TURTLE_HELMET
-            ));
-        }
-
-        public static List<Material> getNetheriteArmorTypes() {
-            return new ArrayList<>(List.of(
-                    Material.NETHERITE_BOOTS,
-                    Material.NETHERITE_CHESTPLATE,
-                    Material.NETHERITE_HELMET,
-                    Material.NETHERITE_LEGGINGS
-            ));
-        }
-
-
-
 
     public double getCooldownDuration(Material weaponType) {
         switch (weaponType) {
@@ -184,51 +92,51 @@ public class Weapons {
         switch (weaponType) {
             // Handguns
             case WOODEN_HOE: // Glock
-                return 8.0 / 3.0;
+                return 8.0 / 2.0;
             case STONE_HOE: // Beretta 92
-                return 10.0 / 3.0;
+                return 10.0 / 2.0;
             case IRON_HOE: // Smith & Wesson M&P
-                return 12.0 / 3.0;
+                return 12.0 / 2.0;
             case GOLDEN_HOE: // Sig Sauer P320
-                return 6.0 / 3.0;
+                return 6.0 / 2.0;
             case DIAMOND_HOE: // Bolt-Action Rifle (Remington 700)
-                return 25.0 / 3.0;
+                return 25.0 / 2.0;
             case NETHERITE_HOE: // Semi-Automatic Rifle (AR-15)
-                return 20.0 / 3.0;
+                return 20.0 / 2.0;
             case WOODEN_AXE: // Pump-Action Shotgun (Remington 870)
-                return 18.0 / 3.0;
+                return 18.0 / 2.0;
             case STONE_AXE: // Semi-Automatic Shotgun (Benelli M2)
-                return 16.0 / 3.0;
+                return 16.0 / 2.0;
             case IRON_AXE: // Light Machine Gun (M249 SAW)
-                return 10.0 / 3.0;
+                return 10.0 / 2.0;
             case GOLDEN_AXE: // Medium Machine Gun (M240)
-                return 8.0 / 3.0;
+                return 8.0 / 2.0;
             case DIAMOND_AXE: // Heavy Machine Gun (Browning M2)
-                return 35.0 / 3.0;
+                return 35.0 / 2.0;
             case WOODEN_SWORD: // Machete
-                return 12.0 / 3.0;
+                return 12.0 / 2.0;
             case STONE_SWORD: // Katana
-                return 15.0 / 3.0;
+                return 15.0 / 2.0;
             case IRON_SWORD: // Longsword
-                return 18.0 / 3.0;
+                return 18.0 / 2.0;
             case GOLDEN_SWORD: // Rapier
-                return 9.0 / 3.0;
+                return 9.0 / 2.0;
             case DIAMOND_SWORD: // Claymore
-                return 22.0 / 3.0;
+                return 22.0 / 2.0;
             case NETHERITE_SWORD: // Zweihander
-                return 25.0 / 3.0;
+                return 25.0 / 2.0;
             case WOODEN_SHOVEL: // Derringer
-                return 5.0 / 3.0;
+                return 5.0 / 2.0;
             case STONE_SHOVEL: // Lever-Action Rifle
-                return 8.0 / 3.0;
+                return 8.0 / 2.0;
             case IRON_SHOVEL: // Bolt-Action Shotgun
-                return 10.0 / 3.0;
+                return 10.0 / 2.0;
             case GOLDEN_SHOVEL: // Sawed-Off Shotgun
-                return 3.0 / 3.0;
+                return 3.0 / 2.0;
             case DIAMOND_SHOVEL: // Pump-Action Shotgun
-                return 16.0 / 3.0;
+                return 16.0 / 2.0;
             case NETHERITE_SHOVEL: // Semi-Automatic Rifle
-                return 20.0 / 3.0;
+                return 20.0 / 2.0;
 
             default:
                 return 0.0;

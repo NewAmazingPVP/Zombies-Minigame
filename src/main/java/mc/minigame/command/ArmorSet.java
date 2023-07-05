@@ -2,7 +2,8 @@ package mc.minigame.command;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import mc.minigame.variables.Weapons;
+import mc.minigame.variables.*;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
@@ -15,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.Set;
 import java.util.UUID;
 
@@ -27,19 +29,112 @@ public class ArmorSet implements CommandExecutor {
                 try {
                     String armorType = args[0];
                     if (armorType.equalsIgnoreCase("leather")) {
-                        for (Material stack : Weapons.getLeatherArmorTypes()) {
+                        for (Material stack : LeatherArmor.getLeatherArmorTypes()) {
                             Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
+                            meta.setDisplayName(ChatColor.DARK_RED + "Assassin Suit");
                             if (meta != null) {
                                 // Add an armor attribute modifier to the armor
                                 meta.addAttributeModifier(
                                         Attribute.GENERIC_ARMOR, new AttributeModifier(
                                                 UUID.randomUUID(),
                                                 "generic.armor",
-                                                20.0,
+                                                LeatherArmor.defensePoints(stack),
                                                 AttributeModifier.Operation.ADD_NUMBER,
-                                                EquipmentSlot.CHEST
+                                                LeatherArmor.slot(stack)
+                                        )
+                                );
+                                armor.setItemMeta(meta);
+
+                                // Give the armor to the player
+                                player.getInventory().addItem(armor);
+                            }
+                        }
+                    } else if (armorType.equalsIgnoreCase("diamond")) {
+                        for (Material stack : DiamondArmor.getDiamondArmorTypes()) {
+                            Player player = (Player) sender;
+                            ItemStack armor = new ItemStack(stack);
+                            ItemMeta meta = armor.getItemMeta();
+                            meta.setDisplayName("Assassin Suit");
+                            if (meta != null) {
+                                // Add an armor attribute modifier to the armor
+                                meta.addAttributeModifier(
+                                        Attribute.GENERIC_ARMOR, new AttributeModifier(
+                                                UUID.randomUUID(),
+                                                "generic.armor",
+                                                DiamondArmor.defensePoints(stack),
+                                                AttributeModifier.Operation.ADD_NUMBER,
+                                                DiamondArmor.slot(stack)
+                                        )
+                                );
+                                armor.setItemMeta(meta);
+
+                                // Give the armor to the player
+                                player.getInventory().addItem(armor);
+                            }
+                        }
+                    } else if (armorType.equalsIgnoreCase("netherite")) {
+                        for (Material stack : NetheriteArmor.getNetheriteArmorTypes()) {
+                            Player player = (Player) sender;
+                            ItemStack armor = new ItemStack(stack);
+                            ItemMeta meta = armor.getItemMeta();
+                            meta.setDisplayName("Netherite Juggernaut");
+                            if (meta != null) {
+                                // Add an armor attribute modifier to the armor
+                                meta.addAttributeModifier(
+                                        Attribute.GENERIC_ARMOR, new AttributeModifier(
+                                                UUID.randomUUID(),
+                                                "generic.armor",
+                                                NetheriteArmor.defensePoints(stack),
+                                                AttributeModifier.Operation.ADD_NUMBER,
+                                                NetheriteArmor.slot(stack)
+                                        )
+                                );
+                                armor.setItemMeta(meta);
+
+                                // Give the armor to the player
+                                player.getInventory().addItem(armor);
+                            }
+                        }
+                    } else if (armorType.equalsIgnoreCase("iron")) {
+                        for (Material stack : IronArmor.getIronArmorTypes()) {
+                            Player player = (Player) sender;
+                            ItemStack armor = new ItemStack(stack);
+                            ItemMeta meta = armor.getItemMeta();
+                            meta.setDisplayName("Ironman Armor");
+                            if (meta != null) {
+                                // Add an armor attribute modifier to the armor
+                                meta.addAttributeModifier(
+                                        Attribute.GENERIC_ARMOR, new AttributeModifier(
+                                                UUID.randomUUID(),
+                                                "generic.armor",
+                                                IronArmor.defensePoints(stack),
+                                                AttributeModifier.Operation.ADD_NUMBER,
+                                                IronArmor.slot(stack)
+                                        )
+                                );
+                                armor.setItemMeta(meta);
+
+                                // Give the armor to the player
+                                player.getInventory().addItem(armor);
+                            }
+                        }
+                    } else if (armorType.equalsIgnoreCase("gold")) {
+                        for (Material stack : GoldenArmor.getGoldenArmorTypes()) {
+                            Player player = (Player) sender;
+                            ItemStack armor = new ItemStack(stack);
+                            ItemMeta meta = armor.getItemMeta();
+                            meta.setDisplayName("Killer's Wear");
+                            if (meta != null) {
+                                // Add an armor attribute modifier to the armor
+                                meta.addAttributeModifier(
+                                        Attribute.GENERIC_ARMOR, new AttributeModifier(
+                                                UUID.randomUUID(),
+                                                "generic.armor",
+                                                GoldenArmor.defensePoints(stack),
+                                                AttributeModifier.Operation.ADD_NUMBER,
+                                                GoldenArmor.slot(stack)
                                         )
                                 );
                                 armor.setItemMeta(meta);
