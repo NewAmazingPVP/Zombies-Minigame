@@ -13,9 +13,10 @@ import mc.minigame.Zombies;
 public class TimerCommand implements CommandExecutor {
 
     private Zombies zombies;
+    private TimerTask timerTask;
 
-    public TimerCommand(Zombies zombies){
-        this.zombies =zombies;
+    public TimerCommand(Zombies zombies) {
+        this.zombies = zombies;
     }
 
     @Override
@@ -26,10 +27,16 @@ public class TimerCommand implements CommandExecutor {
         }
 
         Player player = (Player) sender;
+
+        if (timerTask != null) {
+            timerTask.cancel(); // Cancel the previous timer task if it exists
+        }
+
         player.sendMessage(ChatColor.GREEN + "Timer started!");
 
         // Start a new timer task
-        new TimerTask(player).runTaskTimer(zombies, 0L, 20L); // 20 ticks = 1 second
+        timerTask = new TimerTask(player);
+        timerTask.runTaskTimer(zombies, 0L, 20L); // 20 ticks = 1 second
 
         return true;
     }
