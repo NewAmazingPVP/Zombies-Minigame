@@ -19,7 +19,7 @@ import mc.minigame.game.GameStart;
 public class Zombies extends JavaPlugin implements Listener {
     public GameStart gameStart = new GameStart();
     public PlayerMoney playerMoney = new PlayerMoney();
-    public DisplayBoard displayBoard = new DisplayBoard();
+    public DisplayBoard displayBoard = new DisplayBoard(this);
 
     @Override
     public void onEnable() {

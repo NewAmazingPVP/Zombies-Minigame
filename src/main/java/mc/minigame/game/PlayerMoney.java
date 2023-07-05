@@ -15,27 +15,22 @@ public class PlayerMoney {
     public void addCoins(Player player, int amount) {
         int currentCoins = getCoins(player);
         playerMap.put(player, currentCoins + amount);
-        DisplayBoard.updateScores(player);
     }
 
     public void removeCoins(Player player, int amount) {
         int currentCoins = getCoins(player);
         if (currentCoins > amount) {
             playerMap.put(player, currentCoins - amount);
-            DisplayBoard.updateScores(player);
         } else {
             playerMap.remove(player);
-            DisplayBoard.updateScores(player);
         }
     }
 
     public static void setCoins(Player player, int amount) {
         if (amount > 0) {
             playerMap.put(player, amount);
-            DisplayBoard.updateScores(player);
         } else {
             playerMap.remove(player);
-            DisplayBoard.updateScores(player);
         }
     }
 
