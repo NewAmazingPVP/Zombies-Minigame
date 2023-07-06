@@ -1,11 +1,9 @@
 package mc.minigame;
 
-import mc.minigame.command.ArmorSet;
-import mc.minigame.command.MoneySet;
-import mc.minigame.command.TimerCommand;
-import mc.minigame.command.ZombiesSpawn;
+import mc.minigame.command.*;
 import mc.minigame.game.DisplayBoard;
 import mc.minigame.game.PlayerMoney;
+import mc.minigame.listener.PickCoins;
 import mc.minigame.listener.RadiationBypass;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -27,8 +25,10 @@ public class Zombies extends JavaPlugin implements Listener {
     public void onEnable() {
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new Shoot(), this);
+        getServer().getPluginManager().registerEvents(new PickCoins(this), this);
         getServer().getPluginManager().registerEvents(new RadiationBypass(), this);
-        getCommand("setmoney").setExecutor(new MoneySet());
+        getCommand("givemoney").setExecutor(new GiveMoney());
+        getCommand("removemoney").setExecutor(new RemoveMoney());
         getCommand("giveset").setExecutor(new ArmorSet());
         getCommand("spawnzombie").setExecutor(new ZombiesSpawn());
         getCommand("setTimer").setExecutor(new TimerCommand(this));
@@ -41,7 +41,6 @@ public class Zombies extends JavaPlugin implements Listener {
         player.getWorld().strikeLightningEffect(event.getPlayer().getLocation());
         PotionEffect newEffect = new PotionEffect(PotionEffectType.BLINDNESS, 5*20, 1, false, false);
         player.addPotionEffect(newEffect);
-        gameStart.clearCoins();
         gameStart.onStart(player);
     }
 
