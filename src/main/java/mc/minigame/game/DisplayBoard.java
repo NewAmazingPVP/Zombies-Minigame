@@ -32,7 +32,7 @@ public class DisplayBoard {
                     Score coinsScore = objective.getScore(ChatColor.YELLOW + "Coins: ");
                     coinsScore.setScore(coins);
 
-                    int level = 1;
+                    int level = Rounds.getRounds();
                     Score timeScore = objective.getScore(ChatColor.AQUA + "Level: ");
                     timeScore.setScore(level);
 
