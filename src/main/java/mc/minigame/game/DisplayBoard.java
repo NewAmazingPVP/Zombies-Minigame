@@ -42,6 +42,8 @@ public class DisplayBoard {
 
                     player.setScoreboard(board);
                 } catch (Exception e) {
+                    player.sendMessage(ChatColor.RED + "Your scoreboard encountered a problem and will not be updated until you relog");
+                    player.sendTitle(ChatColor.RED + "Your scoreboard encountered a problem and will not be updated until you relog", "" );
                     this.cancel();
                 }
             }

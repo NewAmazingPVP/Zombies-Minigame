@@ -3,9 +3,12 @@ version: '1.0'
 main: mc.minigame.Zombies
 api-version: 1.18
 commands:
-  setmoney:
-    description: Set your money
-    usage: /setmoney <money>
+  givemoney:
+    description: Add money
+    usage: /givemoney <Player> <money>
+  removemoney:
+    description: Remove money
+    usage: /removemoney <Player> <money>
   giveset:
     description: Get your armor
     usage: /giveset [armorType]

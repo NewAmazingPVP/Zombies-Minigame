@@ -10,7 +10,6 @@ public class GameStart {
     }
 
     public void onStart(Player player) {
-        PlayerMoney.setCoins(player, 0);
         DisplayBoard.board(player);
     }
 }
