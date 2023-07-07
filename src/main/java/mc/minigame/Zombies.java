@@ -3,6 +3,7 @@ package mc.minigame;
 import mc.minigame.command.*;
 import mc.minigame.game.DisplayBoard;
 import mc.minigame.game.PlayerMoney;
+import mc.minigame.game.Rounds;
 import mc.minigame.listener.PickCoins;
 import mc.minigame.listener.RadiationBypass;
 import org.bukkit.*;
@@ -17,9 +18,10 @@ import mc.minigame.listener.Shoot;
 import mc.minigame.game.GameStart;
 
 public class Zombies extends JavaPlugin implements Listener {
-    public GameStart gameStart = new GameStart();
+    public GameStart gameStart = new GameStart(this);
     public PlayerMoney playerMoney = new PlayerMoney();
     public DisplayBoard displayBoard = new DisplayBoard(this);
+    public Rounds rouns = new Rounds(this);
 
     @Override
     public void onEnable() {
@@ -32,6 +34,7 @@ public class Zombies extends JavaPlugin implements Listener {
         getCommand("giveset").setExecutor(new ArmorSet());
         getCommand("spawnzombie").setExecutor(new ZombiesSpawn());
         getCommand("setTimer").setExecutor(new TimerCommand(this));
+        getCommand("startgame").setExecutor(new Start(this));
     }
 
     @EventHandler
@@ -41,7 +44,6 @@ public class Zombies extends JavaPlugin implements Listener {
         player.getWorld().strikeLightningEffect(event.getPlayer().getLocation());
         PotionEffect newEffect = new PotionEffect(PotionEffectType.BLINDNESS, 5*20, 1, false, false);
         player.addPotionEffect(newEffect);
-        gameStart.onStart(player);
     }
 
 }

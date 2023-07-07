@@ -40,6 +40,10 @@ public class DisplayBoard {
                     Score ammoCount = objective.getScore(ChatColor.AQUA + "Ammo: ");
                     ammoCount.setScore(ammo);
 
+                    int seconds = (int) Rounds.getTimeLeft();
+                    Score timeLeft = objective.getScore(ChatColor.GREEN + "Time Left: ");
+                    timeLeft.setScore(seconds);
+
                     player.setScoreboard(board);
                 } catch (Exception e) {
                     player.sendMessage(ChatColor.RED + "Your scoreboard encountered a problem and will not be updated until you relog");
