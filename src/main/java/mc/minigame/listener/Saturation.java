@@ -11,7 +11,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class Saturation implements Listener {
     private Zombies zombies;
-    public void Saturation(Zombies zombies){
+    public Saturation(Zombies zombies){
         this.zombies = zombies;
     }
 
@@ -37,7 +37,7 @@ public class Saturation implements Listener {
                     @Override
                     public void run() {
                         if (player.getHealth() < player.getMaxHealth()) {
-                            player.setHealth(Math.min(player.getHealth() + 0.01, player.getMaxHealth()));
+                            player.setHealth(Math.min(player.getHealth() + 0.2, player.getMaxHealth()));
                         }
                     }
                 }.runTaskLater(zombies, 1);

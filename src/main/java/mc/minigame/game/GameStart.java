@@ -21,7 +21,7 @@ public class GameStart {
             DisplayBoard.board();
             Location loc = new Location(p.getWorld(), -38.0, -19.0, -58.0);
             p.teleport(loc);
-            p.sendTitle(ChatColor.GREEN + "Game Started. Good Luck!", "");
+            p.sendTitle(ChatColor.DARK_PURPLE + "Game Started. Good Luck!", "");
         }
     }
 

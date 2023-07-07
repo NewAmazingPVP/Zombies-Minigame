@@ -6,6 +6,7 @@ import mc.minigame.game.PlayerMoney;
 import mc.minigame.game.Rounds;
 import mc.minigame.listener.PickCoins;
 import mc.minigame.listener.RadiationBypass;
+import mc.minigame.listener.Saturation;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -29,6 +30,7 @@ public class Zombies extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new Shoot(), this);
         getServer().getPluginManager().registerEvents(new PickCoins(this), this);
         getServer().getPluginManager().registerEvents(new RadiationBypass(), this);
+        getServer().getPluginManager().registerEvents(new Saturation(this), this);
         getCommand("givemoney").setExecutor(new GiveMoney());
         getCommand("removemoney").setExecutor(new RemoveMoney());
         getCommand("giveset").setExecutor(new ArmorSet());
