@@ -27,8 +27,8 @@ public class Rounds {
         Location loc2 = new Location(Bukkit.getWorld("world"), -40.0, -4.0, 10.0);
         Spawn.zombies(5 + (2 * round), loc1, loc2, (0.23 + (0.02*round)), (2.0 + (0.2*round)), (20.0 + (2*round)), (0.0 + (0.01*round)), (4.0 + (0.2*round)), (0.0 + (0.01*round)));
 
-        long delay = 20 * 15 + (20 * 15 * round);
-        roundEndTime = System.currentTimeMillis() + delay;
+        int delay = 20 * 15 + (20 * 15 * round);
+        roundEndTime = System.currentTimeMillis() + delay*50;
 
         BukkitRunnable roundTask = new BukkitRunnable() {
             @Override
@@ -54,9 +54,10 @@ public class Rounds {
         }
     }
 
-    public static long getTimeLeft() {
+    public static int getTimeLeft() {
         long currentTime = System.currentTimeMillis();
         long timeLeft = roundEndTime - currentTime;
-        return Math.max(timeLeft / 1000, 0); // Convert milliseconds to seconds
+        return (int) Math.max(timeLeft / 1000, 0); // Convert milliseconds to seconds
     }
+
 }

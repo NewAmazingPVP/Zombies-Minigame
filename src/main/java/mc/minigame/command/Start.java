@@ -15,16 +15,12 @@ public class Start implements CommandExecutor {
         this.zombies = zombies;
     }
 
-    GameStart gameStart = new GameStart(zombies);
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("startgame")) {
-            try {
-                gameStart.onStart();
-                gameStart.start();
-            } catch (NumberFormatException e) {
-                sender.sendMessage("Game couldn't start.");
-            }
+            GameStart gameStart = new GameStart(zombies);
+            gameStart.start();
+            gameStart.onStart();
         } else {
             sender.sendMessage("Type /startgame");
         }

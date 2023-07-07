@@ -40,7 +40,7 @@ public class DisplayBoard {
                     Score ammoCount = objective.getScore(ChatColor.AQUA + "Ammo: ");
                     ammoCount.setScore(ammo);
 
-                    int seconds = (int) Rounds.getTimeLeft();
+                    int seconds = Rounds.getTimeLeft();
                     Score timeLeft = objective.getScore(ChatColor.GREEN + "Time Left: ");
                     timeLeft.setScore(seconds);
 

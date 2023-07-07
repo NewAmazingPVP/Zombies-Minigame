@@ -24,7 +24,7 @@ public class GameStart {
     }
 
     public void start(){
-        Rounds.maxRounds = 5;
+        Rounds.maxRounds = 10;
         Rounds.startRound();
     }
 }

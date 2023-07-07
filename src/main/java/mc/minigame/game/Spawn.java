@@ -37,7 +37,7 @@ public class Spawn extends JavaPlugin {
                 zombie.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(movement);
                 zombie.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(dmg);
                 zombie.getAttribute(Attribute.GENERIC_FOLLOW_RANGE ).setBaseValue(1000);
-                zombie.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(attackSpeed);
+                //zombie.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(attackSpeed);
                 zombie.getAttribute(Attribute.ZOMBIE_SPAWN_REINFORCEMENTS).setBaseValue(reinforce);
                 zombie.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(resistance);
                 zombie.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
