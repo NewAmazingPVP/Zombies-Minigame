@@ -13,12 +13,14 @@ public class GameStart {
         this.zombies = zombies;
     }
 
-    public void onStart(Player player) {
-        PlayerMoney.clearCoins();
-        DisplayBoard.board(player);
-        Location loc = new Location(player.getWorld(), -38.0, -19.0, -58.0);
-        player.teleport(loc);
-        player.sendTitle(ChatColor.GREEN + "Game Started. Good Luck!", "");
+    public void onStart() {
+        for (Player p : zombies.getServer().getOnlinePlayers()) {
+            PlayerMoney.clearCoins();
+            DisplayBoard.board(p);
+            Location loc = new Location(p.getWorld(), -38.0, -19.0, -58.0);
+            p.teleport(loc);
+            p.sendTitle(ChatColor.GREEN + "Game Started. Good Luck!", "");
+        }
     }
 
     public void start(){

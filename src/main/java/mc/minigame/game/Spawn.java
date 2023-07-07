@@ -15,7 +15,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class Spawn extends JavaPlugin {
 
-    public static void zombies(int number, Location loc1, Location loc2) {
+    public static void zombies(int number, Location loc1, Location loc2, Double movement, Double dmg, Double health, Double reinforce, Double attackSpeed, Double resistance) {
         World world = loc1.getWorld();
 
         double minX = Math.min(loc1.getX(), loc2.getX());
@@ -34,12 +34,25 @@ public class Spawn extends JavaPlugin {
             Location spawnLocation = new Location(world, x, y, z);
             if (hasEnoughSpace(spawnLocation) && hasSolidFloor(spawnLocation)) {
                 Zombie zombie = (Zombie) world.spawnEntity(spawnLocation, EntityType.ZOMBIE);
-                zombie.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.3);
-                zombie.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(2.0);
-                zombie.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20.0);
+                zombie.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(movement);
+                zombie.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(dmg);
+                zombie.getAttribute(Attribute.GENERIC_FOLLOW_RANGE ).setBaseValue(1000);
+                zombie.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(attackSpeed);
+                zombie.getAttribute(Attribute.ZOMBIE_SPAWN_REINFORCEMENTS).setBaseValue(reinforce);
+                zombie.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(resistance);
+                zombie.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(health);
                 zombie.setHealth(zombie.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()); // Set the current health to the maximum
                 zombie.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 1200, 1));
                 zombie.setPersistent(true);
+
+                /*GENERIC_ARMOR
+GENERIC_ATTACK_DAMAGE
+GENERIC_ATTACK_SPEED
+GENERIC_FOLLOW_RANGE
+GENERIC_KNOCKBACK_RESISTANCE
+GENERIC_MAX_HEALTH
+GENERIC_MOVEMENT_SPEED
+ZOMBIE_SPAWN_REINFORCEMENTS*/
 
                 Player nearestPlayer = null;
                 double nearestDistance = Double.MAX_VALUE;
