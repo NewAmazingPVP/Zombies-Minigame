@@ -8,7 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class RemoveMoney implements CommandExecutor {
-    PlayerMoney playerMoney = new PlayerMoney();
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("removemoney")) {
@@ -17,7 +16,7 @@ public class RemoveMoney implements CommandExecutor {
                     Player player = Bukkit.getPlayer(args[0]);
                     if (player != null) {
                         int amount = Integer.parseInt(args[1]);
-                        playerMoney.removeCoins(player, amount);
+                        PlayerMoney.removeCoins(player, amount);
                         sender.sendMessage("Successfully remove money from " + player.getName());
                     } else {
                         sender.sendMessage("Player not found.");

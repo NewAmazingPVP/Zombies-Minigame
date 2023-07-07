@@ -18,9 +18,16 @@ public class Start implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("startgame")) {
-            GameStart gameStart = new GameStart(zombies);
-            gameStart.start();
-            gameStart.onStart();
+            try {
+                if (args.length == 1) {
+                    int amount = Integer.parseInt(args[0]);
+                    GameStart gameStart = new GameStart(zombies);
+                    gameStart.start(amount);
+                    gameStart.onStart();
+                }
+            } catch (NumberFormatException e) {
+                sender.sendMessage("Invalid amount of rounds specified.");
+            }
         } else {
             sender.sendMessage("Type /startgame");
         }

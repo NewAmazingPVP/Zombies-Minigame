@@ -24,9 +24,9 @@ public class PickCoins implements Listener {
     public void onPickup(PlayerPickupItemEvent event) {
         if (event.getItem().getItemStack().getType() == Material.GOLD_INGOT) {
             Player player = event.getPlayer();
-            String message = ChatColor.GOLD + "+" + ChatColor.BOLD + "1";
-            TextComponent textComponent = new TextComponent(message);
             Integer amount = event.getItem().getItemStack().getAmount();
+            String message = ChatColor.GOLD + "+" + ChatColor.BOLD + amount + " Pickup Coins";
+            TextComponent textComponent = new TextComponent(message);
             player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
             playerMoney.addCoins(player, amount);
 

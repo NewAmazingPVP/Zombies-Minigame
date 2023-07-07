@@ -1,13 +1,11 @@
 package mc.minigame.listener;
 
 import mc.minigame.Zombies;
+import mc.minigame.game.PlayerMoney;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.*;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -68,7 +66,14 @@ public class Shoot implements Listener {
 
                 Entity target = getTargetEntityAtLocation(targetLocation);
                 if (target != null) {
-                    damageTarget(player, target);
+                    if(target instanceof Zombie) {
+                        PlayerMoney.addCoins(player, 10);
+                        String message = ChatColor.GOLD + "+" + ChatColor.BOLD + "10 Hit Coins";
+                        TextComponent textComponent = new TextComponent(message);
+                        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
+                        damageTarget(player, target);
+                    }
+
                     break;
                 }
 
