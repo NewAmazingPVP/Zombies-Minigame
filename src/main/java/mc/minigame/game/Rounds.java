@@ -44,7 +44,7 @@ public class Rounds {
         if (round < maxRounds) {
             // Start the next round after a delay if desired
             for (Player p : zombies.getServer().getOnlinePlayers()) {
-                p.sendTitle(ChatColor.GREEN + "Round over, next round is starting", "");
+                p.sendTitle(ChatColor.GREEN + "Round over", "");
             }
             Bukkit.getScheduler().runTaskLater(zombies, () -> startRound(), 20);
             round += 1;
