@@ -15,14 +15,12 @@ public class Start implements CommandExecutor {
         this.zombies = zombies;
     }
 
+    GameStart gameStart = new GameStart(zombies);
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("startgame")) {
             try {
-                GameStart gameStart = new GameStart(zombies); // Moved initialization here
-                for (Player player : Bukkit.getOnlinePlayers()){
-                    gameStart.onStart(player);
-                }
+                gameStart.onStart();
                 gameStart.start();
             } catch (NumberFormatException e) {
                 sender.sendMessage("Game couldn't start.");

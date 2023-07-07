@@ -25,7 +25,7 @@ public class Rounds {
     public static void startRound() {
         Location loc1 = new Location(Bukkit.getWorld("world"), 50.0, -21.0, -120.0);
         Location loc2 = new Location(Bukkit.getWorld("world"), -40.0, -4.0, 10.0);
-        Spawn.zombies(5 + (2 * round), loc1, loc2);
+        Spawn.zombies(5 + (2 * round), loc1, loc2, (0.23 + (0.02*round)), (2.0 + (0.2*round)), (20.0 + (2*round)), (0.0 + (0.01*round)), (4.0 + (0.2*round)), (0.0 + (0.01*round)));
 
         long delay = 20 * 15 + (20 * 15 * round);
         roundEndTime = System.currentTimeMillis() + delay;
