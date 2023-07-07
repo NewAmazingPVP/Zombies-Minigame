@@ -18,7 +18,7 @@ public class ZombiesSpawn implements CommandExecutor {
                     int amount = Integer.parseInt(args[0]);
                     Player player = (Player) sender;
                     Location loc1 = new Location(player.getWorld(), 50.0, -21.0, -120.0);
-                    Location loc2 = new Location(player.getWorld(), -40.0, 22.0, 10.0);
+                    Location loc2 = new Location(player.getWorld(), -40.0, -4.0, 10.0);
 
                     Spawn.zombies(amount, loc1, loc2);
 
