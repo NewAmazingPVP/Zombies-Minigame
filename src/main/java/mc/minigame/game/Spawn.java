@@ -54,7 +54,7 @@ GENERIC_MAX_HEALTH
 GENERIC_MOVEMENT_SPEED
 ZOMBIE_SPAWN_REINFORCEMENTS*/
 
-                Player nearestPlayer = null;
+                /*Player nearestPlayer = null;
                 double nearestDistance = Double.MAX_VALUE;
                 for (Player player : zombie.getWorld().getPlayers()) {
                     double distance = zombie.getLocation().distance(player.getLocation());
@@ -66,7 +66,7 @@ ZOMBIE_SPAWN_REINFORCEMENTS*/
 
                 if (nearestPlayer != null) {
                     zombie.setTarget(nearestPlayer);
-                }
+                }*/
                 count++;
             }
         }
