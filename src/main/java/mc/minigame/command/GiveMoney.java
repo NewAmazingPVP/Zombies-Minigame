@@ -8,7 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class GiveMoney implements CommandExecutor {
-    PlayerMoney playerMoney = new PlayerMoney();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -18,7 +17,7 @@ public class GiveMoney implements CommandExecutor {
                     Player player = Bukkit.getPlayer(args[0]);
                     if (player != null) {
                         int amount = Integer.parseInt(args[1]);
-                        playerMoney.addCoins(player, amount);
+                        PlayerMoney.addCoins(player, amount);
                         sender.sendMessage("Successfully gave money to " + player.getName());
                     } else {
                         sender.sendMessage("Player not found.");

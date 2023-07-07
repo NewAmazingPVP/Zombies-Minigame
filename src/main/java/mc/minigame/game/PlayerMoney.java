@@ -12,12 +12,12 @@ public class PlayerMoney {
         return playerMap.getOrDefault(player, 0);
     }
 
-    public void addCoins(Player player, int amount) {
+    public static void addCoins(Player player, int amount) {
         int currentCoins = getCoins(player);
         playerMap.put(player, currentCoins + amount);
     }
 
-    public void removeCoins(Player player, int amount) {
+    public static void removeCoins(Player player, int amount) {
         int currentCoins = getCoins(player);
         if (currentCoins > amount) {
             playerMap.put(player, currentCoins - amount);

@@ -27,6 +27,7 @@ public class ArmorSet implements CommandExecutor {
                             Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
+                            meta.setUnbreakable(true);
                             meta.setDisplayName(ChatColor.BLUE + "Leather Juggernaut");
                             if (meta != null) {
                                 // Add an armor attribute modifier to the armor
@@ -50,6 +51,7 @@ public class ArmorSet implements CommandExecutor {
                             Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
+                            meta.setUnbreakable(true);
                             meta.setDisplayName(ChatColor.DARK_RED + "Assassin Suit");
                             if (meta != null) {
                                 // Add an armor attribute modifier to the armor
@@ -73,6 +75,7 @@ public class ArmorSet implements CommandExecutor {
                             Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
+                            meta.setUnbreakable(true);
                             meta.setDisplayName(ChatColor.MAGIC + "Netherite Juggernaut");
                             meta.setLore(Collections.singletonList(ChatColor.DARK_PURPLE + "RADIATION PROOF IF FULL SET"));
                             if (meta != null) {
@@ -97,6 +100,7 @@ public class ArmorSet implements CommandExecutor {
                             Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
+                            meta.setUnbreakable(true);
                             meta.setDisplayName(ChatColor.GRAY + "Ironman Armor");
                             if (meta != null) {
                                 // Add an armor attribute modifier to the armor
@@ -120,6 +124,7 @@ public class ArmorSet implements CommandExecutor {
                             Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
+                            meta.setUnbreakable(true);
                             meta.setDisplayName(ChatColor.GOLD + "King's Wear");
                             if (meta != null) {
                                 // Add an armor attribute modifier to the armor

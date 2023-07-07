@@ -41,8 +41,11 @@ public class Rounds {
 
     private static void endRound() {
         // Check if there are more rounds to play or if the game is over
-        if (round <= maxRounds) {
+        if (round < maxRounds) {
             // Start the next round after a delay if desired
+            for (Player p : zombies.getServer().getOnlinePlayers()) {
+                p.sendTitle(ChatColor.GREEN + "Round over, next round is starting", "");
+            }
             Bukkit.getScheduler().runTaskLater(zombies, () -> startRound(), 20);
             round += 1;
         } else {

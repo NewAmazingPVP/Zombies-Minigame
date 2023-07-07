@@ -18,37 +18,41 @@ public class DisplayBoard {
         this.zombies = zombies;
     }
 
-    public static void board(Player player) {
-        scoreboardManager = Bukkit.getScoreboardManager();
-        Scoreboard board = scoreboardManager.getNewScoreboard();
-        objective = board.registerNewObjective("Zombies Minigame", "Zombies Minigame", ChatColor.DARK_PURPLE + "Zombies Minigame");
-        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+    public static void board() {
+
 
         runnable = new BukkitRunnable() { // Initialize the variable here
             @Override
             public void run() {
-                try {
-                    int coins = PlayerMoney.getCoins(player); // Get the number of coins the player has
-                    Score coinsScore = objective.getScore(ChatColor.YELLOW + "Coins: ");
-                    coinsScore.setScore(coins);
+                for (Player p : zombies.getServer().getOnlinePlayers()) {
+                    try {
+                        scoreboardManager = Bukkit.getScoreboardManager();
+                        Scoreboard board = scoreboardManager.getNewScoreboard();
+                        objective = board.registerNewObjective("Zombies Minigame" + p, "Zombies Minigame" + p, ChatColor.DARK_PURPLE + "Zombies Minigame");
+                        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
-                    int level = Rounds.getRounds();
-                    Score timeScore = objective.getScore(ChatColor.AQUA + "Level: ");
-                    timeScore.setScore(level);
+                        int coins = PlayerMoney.getCoins(p); // Get the number of coins the player has
+                        Score coinsScore = objective.getScore(ChatColor.YELLOW + "Coins: ");
+                        coinsScore.setScore(coins);
 
-                    int ammo = Shoot.countArrowsInInventory(player);
-                    Score ammoCount = objective.getScore(ChatColor.AQUA + "Ammo: ");
-                    ammoCount.setScore(ammo);
+                        int level = Rounds.getRounds();
+                        Score timeScore = objective.getScore(ChatColor.AQUA + "Level: ");
+                        timeScore.setScore(level);
 
-                    int seconds = Rounds.getTimeLeft();
-                    Score timeLeft = objective.getScore(ChatColor.GREEN + "Time Left: ");
-                    timeLeft.setScore(seconds);
+                        int ammo = Shoot.countArrowsInInventory(p);
+                        Score ammoCount = objective.getScore(ChatColor.AQUA + "Ammo: ");
+                        ammoCount.setScore(ammo);
 
-                    player.setScoreboard(board);
-                } catch (Exception e) {
-                    player.sendMessage(ChatColor.RED + "Your scoreboard encountered a problem and will not be updated until you relog");
-                    player.sendTitle(ChatColor.RED + "Your scoreboard encountered a problem and will not be updated until you relog", "" );
-                    this.cancel();
+                        int seconds = Rounds.getTimeLeft();
+                        Score timeLeft = objective.getScore(ChatColor.GREEN + "Time Left: ");
+                        timeLeft.setScore(seconds);
+
+                        p.setScoreboard(board);
+
+                    } catch (Exception e) {
+                        p.sendMessage(ChatColor.RED + "Your scoreboard encountered a problem and will not be updated until you relog");
+                        p.sendTitle(ChatColor.RED + "Your scoreboard encountered a problem and will not be updated until you relog", "" );
+                    }
                 }
             }
         };
