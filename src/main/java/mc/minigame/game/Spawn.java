@@ -42,6 +42,7 @@ public class Spawn extends JavaPlugin {
                 zombie.setHealth(zombie.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()); // Set the current health to the maximum
                 zombie.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 1200, 1));
                 zombie.setPersistent(true);
+                zombie.setRemoveWhenFarAway(false);
 
 
                 /*Player nearestPlayer = null;

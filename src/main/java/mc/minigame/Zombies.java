@@ -22,7 +22,7 @@ public class Zombies extends JavaPlugin implements Listener {
     public GameStart gameStart = new GameStart(this);
     public PlayerMoney playerMoney = new PlayerMoney();
     public DisplayBoard displayBoard = new DisplayBoard(this);
-    public Rounds rouns = new Rounds(this);
+    public Rounds rounds = new Rounds(this);
 
     @Override
     public void onEnable() {
