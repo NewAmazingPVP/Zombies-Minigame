@@ -1,20 +1,15 @@
 package mc.minigame.game;
 
-import mc.minigame.Zombies;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import static mc.minigame.Zombies.zombies;
+
 public class Rounds {
-    private static Zombies zombies;
     private static long roundEndTime;
-
-    public Rounds(Zombies zombies) {
-        this.zombies = zombies;
-    }
-
     private static int round = 1;
     public static int maxRounds;
 

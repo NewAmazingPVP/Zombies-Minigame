@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Weapons {
 
-    public List<Material> weaponList = Arrays.asList(
+    public static List<Material> weaponList = Arrays.asList(
             Material.WOODEN_HOE,
             Material.STONE_HOE,
             Material.IRON_HOE,
@@ -32,7 +32,7 @@ public class Weapons {
     );
 
 
-    public double getCooldownDuration(Material weaponType) {
+    public static double getCooldownDuration(Material weaponType) {
         switch (weaponType) {
             // Handguns
             case WOODEN_HOE: // Glock
@@ -87,7 +87,7 @@ public class Weapons {
         }
     }
 
-    public double calculateDamageAmount(Material weaponType) {
+    public static double calculateDamageAmount(Material weaponType) {
         switch (weaponType) {
             // Handguns
             case WOODEN_HOE: // Glock

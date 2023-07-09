@@ -1,6 +1,5 @@
 package mc.minigame.game;
 
-import mc.minigame.Zombies;
 import mc.minigame.listener.Shoot;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -8,15 +7,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.*;
 
+import static mc.minigame.Zombies.zombies;
+
 public class DisplayBoard {
     private static ScoreboardManager scoreboardManager;
     private static Objective objective;
-    private static Zombies zombies;
     private static BukkitRunnable runnable;
-
-    public DisplayBoard(Zombies zombies) {
-        this.zombies = zombies;
-    }
 
     public static void board() {
 

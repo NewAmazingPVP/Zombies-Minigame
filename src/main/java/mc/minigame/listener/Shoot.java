@@ -1,6 +1,5 @@
 package mc.minigame.listener;
 
-import mc.minigame.Zombies;
 import mc.minigame.game.PlayerMoney;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -20,12 +19,7 @@ import java.util.Map;
 
 public class Shoot implements Listener {
 
-    private Zombies mainPlugin;
-
-
-    private Weapons weapons = new Weapons();
     public Map<Player, Long> cooldowns = new HashMap<>();
-
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
@@ -33,7 +27,7 @@ public class Shoot implements Listener {
 
         // Check if the player right-clicked with a diamond hoe
         if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) &&
-                event.hasItem() && weapons.weaponList.contains(event.getItem().getType())) {
+                event.hasItem() && Weapons.weaponList.contains(event.getItem().getType())) {
 
             if (hasCooldown(player)) {
                 return;
@@ -100,7 +94,7 @@ public class Shoot implements Listener {
     }
 
     private void damageTarget(Player player, Entity target) {
-        double damageAmount = weapons.calculateDamageAmount(player.getItemInHand().getType());
+        double damageAmount = Weapons.calculateDamageAmount(player.getItemInHand().getType());
         ((LivingEntity) target).damage(damageAmount, player);
     }
 
@@ -114,7 +108,7 @@ public class Shoot implements Listener {
     }
 
     private void applyCooldown(Player player) {
-        double cooldownSeconds = weapons.getCooldownDuration(player.getItemInHand().getType());
+        double cooldownSeconds = Weapons.getCooldownDuration(player.getItemInHand().getType());
         if (cooldownSeconds > 0) {
             long cooldownEndTime = (long) (System.currentTimeMillis() + (cooldownSeconds * 1000.0));
             cooldowns.put(player, cooldownEndTime);
@@ -131,7 +125,7 @@ public class Shoot implements Listener {
     }
 
     public void animation(Player player, Material material) {
-        double cooldownSeconds = weapons.getCooldownDuration(player.getItemInHand().getType()) * 20;
+        double cooldownSeconds = Weapons.getCooldownDuration(player.getItemInHand().getType()) * 20;
         player.setCooldown(material, (int) cooldownSeconds);
     }
 
@@ -148,12 +142,12 @@ public class Shoot implements Listener {
         return arrowCount;
     }
 
-    public void shootArrow(Player player) {
+    /*public void shootArrow(Player player) {
         Arrow arrow = player.launchProjectile(Arrow.class);
         arrow.setDamage(0.0);
         arrow.setVelocity(player.getEyeLocation().getDirection().multiply(2));
         arrow.setShooter(player);
         arrow.playEffect(EntityEffect.ARROW_PARTICLES);
         Bukkit.getScheduler().runTaskLater(mainPlugin, arrow::remove, 5);
-    }
+    }*/
 }

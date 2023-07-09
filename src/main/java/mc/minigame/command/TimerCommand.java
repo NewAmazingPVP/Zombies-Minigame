@@ -8,16 +8,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import mc.minigame.Zombies;
+
+import static mc.minigame.Zombies.zombies;
 
 public class TimerCommand implements CommandExecutor {
-
-    private Zombies zombies;
     private TimerTask timerTask;
-
-    public TimerCommand(Zombies zombies) {
-        this.zombies = zombies;
-    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
