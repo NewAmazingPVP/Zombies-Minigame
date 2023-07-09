@@ -1,26 +1,11 @@
 package mc.minigame.game;
 
-import net.milkbowl.vault.economy.Economy;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.RegisteredServiceProvider;
+
+import static mc.minigame.Zombies.economy;
 
 
 public class PlayerMoney {
-
-    public static Economy economy;
-
-    public PlayerMoney(){
-        setupEconomy();
-    }
-
-    public static void setupEconomy() {
-        RegisteredServiceProvider<Economy> rsp = Bukkit.getServicesManager().getRegistration(Economy.class);
-        if (rsp != null) {
-            economy = rsp.getProvider();
-        }
-    }
-
 
     public static int getCoins(Player player) {
         return (int) economy.getBalance(player);
