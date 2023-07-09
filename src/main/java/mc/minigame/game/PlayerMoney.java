@@ -1,40 +1,64 @@
 package mc.minigame.game;
 
+import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.RegisteredServiceProvider;
 
-import java.util.HashMap;
 
 public class PlayerMoney {
-    private static HashMap<Player, Integer> playerMap = new HashMap<>();
+
+    public static Economy economy;
+
+    public PlayerMoney(){
+        setupEconomy();
+    }
+
+    public static void setupEconomy() {
+        RegisteredServiceProvider<Economy> rsp = Bukkit.getServicesManager().getRegistration(Economy.class);
+        if (rsp != null) {
+            economy = rsp.getProvider();
+        }
+    }
 
 
     public static int getCoins(Player player) {
-        return playerMap.getOrDefault(player, 0);
+        return (int) economy.getBalance(player);
     }
 
     public static void addCoins(Player player, int amount) {
-        int currentCoins = getCoins(player);
-        playerMap.put(player, currentCoins + amount);
+        economy.depositPlayer(player, amount);
     }
 
     public static void removeCoins(Player player, int amount) {
-        int currentCoins = getCoins(player);
+        int currentCoins = (int) economy.getBalance(player);
         if (currentCoins > amount) {
-            playerMap.put(player, currentCoins - amount);
+            economy.withdrawPlayer(player, amount);
         } else {
-            playerMap.remove(player);
+            economy.withdrawPlayer(player, currentCoins);
         }
     }
 
     public static void setCoins(Player player, int amount) {
-        if (amount > 0) {
-            playerMap.put(player, amount);
-        } else {
-            playerMap.remove(player);
+        double currentBalance = economy.getBalance(player);
+        double difference = amount - currentBalance;
+
+        if (difference > 0) {
+            economy.depositPlayer(player, difference);
+        } else if (difference < 0) {
+            economy.withdrawPlayer(player, -difference);
         }
     }
 
-    public static void clearCoins() {
-        playerMap.clear();
-    }
+    /*public static void clearCoins() {
+        RegisteredServiceProvider<Economy> rsp = Bukkit.getServicesManager().getRegistration(Economy.class);
+        if (rsp == null) {
+            return;
+        }
+        economy = rsp.getProvider();
+        for (Player player : playerMap.keySet()) {
+            playerMap.remove(player);
+            economy.withdrawPlayer(player, economy.getBalance(player));
+        }
+    }*/
 }

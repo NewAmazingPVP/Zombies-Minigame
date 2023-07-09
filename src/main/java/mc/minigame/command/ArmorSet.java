@@ -30,7 +30,6 @@ public class ArmorSet implements CommandExecutor {
                             meta.setUnbreakable(true);
                             meta.setDisplayName(ChatColor.BLUE + "Leather Juggernaut");
                             if (meta != null) {
-                                // Add an armor attribute modifier to the armor
                                 meta.addAttributeModifier(
                                         Attribute.GENERIC_ARMOR, new AttributeModifier(
                                                 UUID.randomUUID(),
@@ -42,7 +41,6 @@ public class ArmorSet implements CommandExecutor {
                                 );
                                 armor.setItemMeta(meta);
 
-                                // Give the armor to the player
                                 player.getInventory().addItem(armor);
                             }
                         }
@@ -54,7 +52,6 @@ public class ArmorSet implements CommandExecutor {
                             meta.setUnbreakable(true);
                             meta.setDisplayName(ChatColor.DARK_RED + "Assassin Suit");
                             if (meta != null) {
-                                // Add an armor attribute modifier to the armor
                                 meta.addAttributeModifier(
                                         Attribute.GENERIC_ARMOR, new AttributeModifier(
                                                 UUID.randomUUID(),
@@ -66,7 +63,6 @@ public class ArmorSet implements CommandExecutor {
                                 );
                                 armor.setItemMeta(meta);
 
-                                // Give the armor to the player
                                 player.getInventory().addItem(armor);
                             }
                         }
@@ -79,7 +75,6 @@ public class ArmorSet implements CommandExecutor {
                             meta.setDisplayName(ChatColor.MAGIC + "Netherite Juggernaut");
                             meta.setLore(Collections.singletonList(ChatColor.DARK_PURPLE + "RADIATION PROOF IF FULL SET"));
                             if (meta != null) {
-                                // Add an armor attribute modifier to the armor
                                 meta.addAttributeModifier(
                                         Attribute.GENERIC_ARMOR, new AttributeModifier(
                                                 UUID.randomUUID(),
@@ -91,7 +86,6 @@ public class ArmorSet implements CommandExecutor {
                                 );
                                 armor.setItemMeta(meta);
 
-                                // Give the armor to the player
                                 player.getInventory().addItem(armor);
                             }
                         }
@@ -103,7 +97,6 @@ public class ArmorSet implements CommandExecutor {
                             meta.setUnbreakable(true);
                             meta.setDisplayName(ChatColor.GRAY + "Ironman Armor");
                             if (meta != null) {
-                                // Add an armor attribute modifier to the armor
                                 meta.addAttributeModifier(
                                         Attribute.GENERIC_ARMOR, new AttributeModifier(
                                                 UUID.randomUUID(),
@@ -115,7 +108,6 @@ public class ArmorSet implements CommandExecutor {
                                 );
                                 armor.setItemMeta(meta);
 
-                                // Give the armor to the player
                                 player.getInventory().addItem(armor);
                             }
                         }
@@ -127,7 +119,6 @@ public class ArmorSet implements CommandExecutor {
                             meta.setUnbreakable(true);
                             meta.setDisplayName(ChatColor.GOLD + "King's Wear");
                             if (meta != null) {
-                                // Add an armor attribute modifier to the armor
                                 meta.addAttributeModifier(
                                         Attribute.GENERIC_ARMOR, new AttributeModifier(
                                                 UUID.randomUUID(),
@@ -139,7 +130,6 @@ public class ArmorSet implements CommandExecutor {
                                 );
                                 armor.setItemMeta(meta);
 
-                                // Give the armor to the player
                                 player.getInventory().addItem(armor);
                             }
                         }

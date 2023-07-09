@@ -6,8 +6,6 @@ import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
@@ -45,14 +43,6 @@ public class Spawn extends JavaPlugin {
                 zombie.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 1200, 1));
                 zombie.setPersistent(true);
 
-                /*GENERIC_ARMOR
-GENERIC_ATTACK_DAMAGE
-GENERIC_ATTACK_SPEED
-GENERIC_FOLLOW_RANGE
-GENERIC_KNOCKBACK_RESISTANCE
-GENERIC_MAX_HEALTH
-GENERIC_MOVEMENT_SPEED
-ZOMBIE_SPAWN_REINFORCEMENTS*/
 
                 /*Player nearestPlayer = null;
                 double nearestDistance = Double.MAX_VALUE;
@@ -75,7 +65,7 @@ ZOMBIE_SPAWN_REINFORCEMENTS*/
 
 
     private static boolean hasEnoughSpace(Location location) {
-        int radius = 1; // Adjust the radius as needed
+        int radius = 1;
 
         for (int x = -radius; x <= radius; x++) {
             for (int y = 0; y <= radius * 2; y++) {
@@ -92,7 +82,7 @@ ZOMBIE_SPAWN_REINFORCEMENTS*/
     }
 
     private static boolean hasSolidFloor(Location location) {
-        int floorCheckRange = 1; // Adjust the range as needed
+        int floorCheckRange = 1;
 
         for (int y = -floorCheckRange; y <= -1; y++) {
             Block block = location.clone().add(0, y, 0).getBlock();

@@ -9,7 +9,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class Rounds {
     private static Zombies zombies;
-    private static long roundEndTime; // Added variable to store the scheduled time of the round's end
+    private static long roundEndTime;
 
     public Rounds(Zombies zombies) {
         this.zombies = zombies;
@@ -42,7 +42,6 @@ public class Rounds {
     private static void endRound() {
         // Check if there are more rounds to play or if the game is over
         if (round < maxRounds) {
-            // Start the next round after a delay if desired
             for (Player p : zombies.getServer().getOnlinePlayers()) {
                 p.sendTitle(ChatColor.GREEN + "Round over", "");
             }

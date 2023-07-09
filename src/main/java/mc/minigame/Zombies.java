@@ -46,6 +46,8 @@ public class Zombies extends JavaPlugin implements Listener {
         player.getWorld().strikeLightningEffect(event.getPlayer().getLocation());
         PotionEffect newEffect = new PotionEffect(PotionEffectType.BLINDNESS, 5*20, 1, false, false);
         player.addPotionEffect(newEffect);
+        PlayerMoney.setCoins(player, 0);
+        DisplayBoard.board();
     }
 
 }

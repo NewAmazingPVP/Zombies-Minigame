@@ -34,9 +34,8 @@ public class TimerCommand implements CommandExecutor {
 
         player.sendMessage(ChatColor.GREEN + "Timer started!");
 
-        // Start a new timer task
         timerTask = new TimerTask(player);
-        timerTask.runTaskTimer(zombies, 0L, 20L); // 20 ticks = 1 second
+        timerTask.runTaskTimer(zombies, 0L, 20L);
 
         return true;
     }

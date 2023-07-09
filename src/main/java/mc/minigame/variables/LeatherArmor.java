@@ -4,7 +4,6 @@ import org.bukkit.Material;
 import org.bukkit.inventory.EquipmentSlot;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class LeatherArmor {

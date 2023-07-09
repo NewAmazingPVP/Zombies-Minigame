@@ -1,8 +1,6 @@
 package mc.minigame.command;
 
-import mc.minigame.Zombies;
 import mc.minigame.game.Spawn;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
