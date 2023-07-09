@@ -11,7 +11,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.util.Vector;
 import mc.minigame.variables.Weapons;
 import org.bukkit.inventory.ItemStack;
@@ -37,7 +36,6 @@ public class Shoot implements Listener {
                 event.hasItem() && weapons.weaponList.contains(event.getItem().getType())) {
 
             if (hasCooldown(player)) {
-                // Player is on cooldown
                 return;
             }
 
@@ -77,7 +75,7 @@ public class Shoot implements Listener {
                     break;
                 }
 
-                // Check if the target location is obstructed by a block
+                // Target location is obstructed by a block
                 if (targetLocation.getBlock().getType().isSolid()) {
                     break;
                 }
@@ -153,9 +151,9 @@ public class Shoot implements Listener {
     public void shootArrow(Player player) {
         Arrow arrow = player.launchProjectile(Arrow.class);
         arrow.setDamage(0.0);
-        arrow.setVelocity(player.getEyeLocation().getDirection().multiply(2)); // Adjust the velocity as needed
+        arrow.setVelocity(player.getEyeLocation().getDirection().multiply(2));
         arrow.setShooter(player);
         arrow.playEffect(EntityEffect.ARROW_PARTICLES);
-        Bukkit.getScheduler().runTaskLater(mainPlugin, arrow::remove, 5); // Remove the arrow entity after a short delay
+        Bukkit.getScheduler().runTaskLater(mainPlugin, arrow::remove, 5);
     }
 }

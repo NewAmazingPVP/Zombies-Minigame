@@ -1,7 +1,6 @@
 package mc.minigame.listener;
 
 import mc.minigame.Zombies;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

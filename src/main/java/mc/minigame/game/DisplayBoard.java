@@ -12,7 +12,7 @@ public class DisplayBoard {
     private static ScoreboardManager scoreboardManager;
     private static Objective objective;
     private static Zombies zombies;
-    private static BukkitRunnable runnable; // Declare the variable here
+    private static BukkitRunnable runnable;
 
     public DisplayBoard(Zombies zombies) {
         this.zombies = zombies;
@@ -40,12 +40,16 @@ public class DisplayBoard {
                         timeScore.setScore(level);
 
                         int ammo = Shoot.countArrowsInInventory(p);
-                        Score ammoCount = objective.getScore(ChatColor.AQUA + "Ammo: ");
+                        Score ammoCount = objective.getScore(ChatColor.BLUE + "Ammo: ");
                         ammoCount.setScore(ammo);
 
                         int seconds = Rounds.getTimeLeft();
                         Score timeLeft = objective.getScore(ChatColor.GREEN + "Time Left: ");
                         timeLeft.setScore(seconds);
+
+                        int zombieCount = ZombieCount.getTotalZombieCount();
+                        Score count = objective.getScore(ChatColor.DARK_RED + "Zombies: ");
+                        count.setScore(zombieCount);
 
                         p.setScoreboard(board);
 

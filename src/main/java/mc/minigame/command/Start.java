@@ -1,12 +1,10 @@
 package mc.minigame.command;
 
 import mc.minigame.Zombies;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import mc.minigame.game.GameStart;
-import org.bukkit.entity.Player;
 
 public class Start implements CommandExecutor {
     private Zombies zombies;
