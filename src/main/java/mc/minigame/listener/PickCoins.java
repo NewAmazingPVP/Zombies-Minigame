@@ -16,7 +16,6 @@ import org.bukkit.inventory.ItemStack;
 public class PickCoins implements Listener {
 
     private Zombies zombies;
-    PlayerMoney playerMoney = new PlayerMoney();
     public PickCoins(Zombies zombies) {
         this.zombies = zombies;
     }
@@ -28,7 +27,7 @@ public class PickCoins implements Listener {
             String message = ChatColor.GOLD + "+" + ChatColor.BOLD + amount + " Pickup Coins";
             TextComponent textComponent = new TextComponent(message);
             player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
-            playerMoney.addCoins(player, amount);
+            PlayerMoney.addCoins(player, amount);
 
             Bukkit.getScheduler().runTaskLater(zombies, () -> {
                 ItemStack goldIngot = new ItemStack(Material.GOLD_INGOT, amount);
