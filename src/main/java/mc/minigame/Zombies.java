@@ -3,9 +3,7 @@ package mc.minigame;
 import mc.minigame.command.*;
 import mc.minigame.game.DisplayBoard;
 import mc.minigame.game.PlayerMoney;
-import mc.minigame.listener.PickCoins;
-import mc.minigame.listener.RadiationBypass;
-import mc.minigame.listener.Saturation;
+import mc.minigame.listener.*;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -16,7 +14,6 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import mc.minigame.listener.Shoot;
 
 
 public class Zombies extends JavaPlugin implements Listener {
@@ -31,12 +28,14 @@ public class Zombies extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new PickCoins(), this);
         getServer().getPluginManager().registerEvents(new RadiationBypass(), this);
         getServer().getPluginManager().registerEvents(new Saturation(), this);
+        getServer().getPluginManager().registerEvents(new Misc(), this);
         getCommand("givemoney").setExecutor(new GiveMoney());
         getCommand("removemoney").setExecutor(new RemoveMoney());
         getCommand("giveset").setExecutor(new ArmorSet());
         getCommand("spawnzombie").setExecutor(new ZombiesSpawn());
         getCommand("setTimer").setExecutor(new TimerCommand());
         getCommand("startgame").setExecutor(new Start());
+        getCommand("stopgame").setExecutor(new Stop());
         setupEconomy();
     }
 
