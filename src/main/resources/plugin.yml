@@ -23,3 +23,6 @@ commands:
   startgame:
     description: Start the game
     usage: /startgame
+  stopgame:
+    description: Stop the game
+    usage: /stopgame

@@ -13,11 +13,15 @@ public class Rounds {
     private static int round = 1;
     public static int maxRounds;
 
+    public static boolean gameOn = false;
+
     public static int getRounds() {
         return round;
     }
 
     public static void startRound() {
+        ZombieCount.killAllZombies();
+        gameOn = true;
         Location loc1 = new Location(Bukkit.getWorld("world"), 50.0, -21.0, -120.0);
         Location loc2 = new Location(Bukkit.getWorld("world"), -40.0, -4.0, 10.0);
         Spawn.zombies(5 + (2 * round), loc1, loc2, (0.23 + (0.02*round)), (2.0 + (0.2*round)), (20.0 + (2*round)), (0.0 + (0.01*round)), (4.0 + (0.2*round)), (0.0 + (0.01*round)));
@@ -34,7 +38,7 @@ public class Rounds {
         roundTask.runTaskLater(zombies, delay);
     }
 
-    private static void endRound() {
+    public static void endRound() {
         // Check if there are more rounds to play or if the game is over
         if (round < maxRounds) {
             for (Player p : zombies.getServer().getOnlinePlayers()) {
@@ -48,6 +52,8 @@ public class Rounds {
                 round = 1;
                 maxRounds = 0;
             }
+            ZombieCount.killAllZombies();
+            gameOn = false;
         }
     }
 
@@ -55,6 +61,14 @@ public class Rounds {
         long currentTime = System.currentTimeMillis();
         long timeLeft = roundEndTime - currentTime;
         return (int) Math.max(timeLeft / 1000, 0); // Convert milliseconds to seconds
+    }
+
+    public static int getMaxRounds(){
+        return maxRounds;
+    }
+
+    public static int round(){
+        return round;
     }
 
 }
