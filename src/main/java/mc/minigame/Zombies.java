@@ -37,7 +37,7 @@ public class Zombies extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new PickCoins(), this);
         getServer().getPluginManager().registerEvents(new RadiationBypass(), this);
         getServer().getPluginManager().registerEvents(new Saturation(), this);
-        getServer().getPluginManager().registerEvents(new Misc(), this);
+        getServer().getPluginManager().registerEvents(new GameEvents(), this);
         getCommand("givemoney").setExecutor(new GiveMoney());
         getCommand("removemoney").setExecutor(new RemoveMoney());
         getCommand("giveset").setExecutor(new ArmorSet());

@@ -16,7 +16,7 @@ import java.util.HashSet;
 import static mc.minigame.Zombies.zombies;
 import static mc.minigame.game.Rounds.deadPlayers;
 
-public class Misc implements Listener {
+public class GameEvents implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event){
         if(Rounds.gameOn){
