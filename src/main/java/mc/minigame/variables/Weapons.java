@@ -26,8 +26,8 @@ public class Weapons {
 
     public static double getCooldownDuration(Material weaponType) {
         switch (weaponType) {
-            case WOODEN_HOE: // Knife
-                return 0.5;
+            case WOODEN_HOE:
+                return 0.7;
             case WOODEN_SHOVEL: // Pistol
                 return 0.5;
             case STONE_HOE: // Ultimate Pistol
@@ -46,12 +46,12 @@ public class Weapons {
                 return 1.5;
             case GOLDEN_PICKAXE: // Sniper
                 return 1.5;
-            case FLINT_AND_STEEL: // Ultimate Sniper
-                return 1.5;
+            case FLINT_AND_STEEL: // Flamethrower
+                return 0.1;
             case DIAMOND_HOE: // Elder Gun
                 return 0.9;
             case DIAMOND_PICKAXE: // Ultimate Elder Gun
-                return 0.8;
+                return 1.5;
             default:
                 return 0.0;
         }
@@ -59,7 +59,7 @@ public class Weapons {
 
     public static double calculateDamageAmount(Material weaponType) {
         switch (weaponType) {
-            case WOODEN_HOE: // Knife
+            case WOODEN_HOE:
                 return 6.0;
             case WOODEN_SHOVEL: // Pistol
                 return 6.0;
@@ -79,12 +79,12 @@ public class Weapons {
                 return 20.0;
             case GOLDEN_PICKAXE: // Sniper
                 return 20.0;
-            case FLINT_AND_STEEL: // Ultimate Sniper
-                return 30.0;
+            case FLINT_AND_STEEL: // Flamethrower
+                return 2.0;
             case DIAMOND_HOE: // Elder Gun
                 return 15.0;
-            case DIAMOND_PICKAXE: // Ultimate Elder Gun
-                return 20.0;
+            case DIAMOND_PICKAXE: // Ultimate Sniper
+                return 30.0;
             default:
                 return 0.0;
         }

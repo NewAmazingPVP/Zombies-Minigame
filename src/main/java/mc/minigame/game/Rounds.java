@@ -2,29 +2,41 @@ package mc.minigame.game;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Iterator;
+
+
+import mc.minigame.variables.Loc;
 
 import static mc.minigame.Zombies.zombies;
 
 public class Rounds {
-    private static long roundEndTime;
+    public static long roundEndTime;
     private static int round = 1;
     public static int maxRounds;
-
     public static boolean gameOn = false;
+
+    public static List<Player> deadPlayers = new ArrayList<>();;
 
     public static int getRounds() {
         return round;
     }
 
     public static void startRound() {
-        ZombieCount.killAllZombies();
         gameOn = true;
-        Location loc1 = new Location(Bukkit.getWorld("world"), 50.0, -21.0, -120.0);
-        Location loc2 = new Location(Bukkit.getWorld("world"), -40.0, -4.0, 10.0);
-        Spawn.zombies(5 + (2 * round), loc1, loc2, (0.23 + (0.02*round)), (2.0 + (0.2*round)), (20.0 + (2*round)), (0.0 + (0.01*round)), (4.0 + (0.2*round)), (0.0 + (0.01*round)));
+        Iterator<Player> iterator = deadPlayers.iterator();
+        while (iterator.hasNext()) {
+            Player player = iterator.next();
+            player.teleport(Loc.startLoc);
+            iterator.remove();
+        }
+        ZombieCount.killAllZombies();
+        Spawn.zombies(5 + (2 * round), Loc.mapEdgeloc1, Loc.mapEdgeloc2, (0.23 + (0.02*round)), (2.0 + (0.2*round)), (20.0 + (2*round)), (0.0 + (0.01*round)), (4.0 + (0.2*round)), (0.0 + (0.01*round)));
 
         int delay = 20 * 15 + (20 * 15 * round);
         roundEndTime = System.currentTimeMillis() + delay*50;
@@ -32,28 +44,47 @@ public class Rounds {
         BukkitRunnable roundTask = new BukkitRunnable() {
             @Override
             public void run() {
-                endRound();
+                if (gameOn) {
+                    endRound();
+                }
             }
         };
         roundTask.runTaskLater(zombies, delay);
     }
 
     public static void endRound() {
+        gameOn = false;
         // Check if there are more rounds to play or if the game is over
-        if (round < maxRounds) {
+        boolean allDead = new HashSet<>(deadPlayers).containsAll(zombies.getServer().getOnlinePlayers());
+        if (round < maxRounds && !allDead) {
             for (Player p : zombies.getServer().getOnlinePlayers()) {
-                p.sendTitle(ChatColor.GREEN + "Round over", "");
+                p.sendTitle(ChatColor.GREEN + "Round " + round++, "");
             }
-            Bukkit.getScheduler().runTaskLater(zombies, () -> startRound(), 20);
-            round += 1;
+            startRound();
+            round++;
+        } else if (allDead){
+            for (Player p : zombies.getServer().getOnlinePlayers()) {
+                p.sendTitle(ChatColor.RED + "YOU LOST!", "");
+                p.teleport(Loc.lobby);
+                p.getInventory().clear();
+                PlayerMoney.setCoins(p, 0);
+            }
+            round = 1;
+            maxRounds = 0;
+            roundEndTime = 0;
+            ZombieCount.killAllZombies();
         } else {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 player.sendTitle(ChatColor.GOLD + "YOU WON", "");
-                round = 1;
-                maxRounds = 0;
+                player.teleport(Loc.lobby);
+                player.teleport(Loc.lobby);
+                player.getInventory().clear();
+                PlayerMoney.setCoins(player, 0);
             }
+            round = 1;
+            maxRounds = 0;
+            roundEndTime = 0;
             ZombieCount.killAllZombies();
-            gameOn = false;
         }
     }
 
