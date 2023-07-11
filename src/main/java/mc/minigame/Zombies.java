@@ -13,6 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
@@ -67,6 +68,12 @@ public class Zombies extends JavaPlugin implements Listener {
             if(!Rounds.deadPlayers.contains(player)){
                 Rounds.deadPlayers.add(player);
             }
+            player.getInventory().clear();
+            ItemStack weapon = new ItemStack(Material.STONE_HOE, 1);
+            player.getInventory().addItem(weapon);
+            ItemStack ammo = new ItemStack(Material.ARROW, 64);
+            player.getInventory().addItem(ammo);
+            player.setGameMode(GameMode.SURVIVAL);
         }
     }
 
