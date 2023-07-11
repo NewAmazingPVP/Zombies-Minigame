@@ -2,7 +2,10 @@ package mc.minigame.game;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
@@ -31,8 +34,8 @@ public class Rounds {
         gameOn = true;
         Iterator<Player> iterator = deadPlayers.iterator();
         while (iterator.hasNext()) {
-            Player player = iterator.next();
-            player.teleport(Loc.startLoc);
+            Player p = iterator.next();
+            p.teleport(Loc.startLoc);
             iterator.remove();
         }
         ZombieCount.killAllZombies();
@@ -76,7 +79,6 @@ public class Rounds {
         } else {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 player.sendTitle(ChatColor.GOLD + "YOU WON", "");
-                player.teleport(Loc.lobby);
                 player.teleport(Loc.lobby);
                 player.getInventory().clear();
                 PlayerMoney.setCoins(player, 0);

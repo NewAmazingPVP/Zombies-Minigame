@@ -34,6 +34,7 @@ public class Misc implements Listener {
         if(Rounds.gameOn){
             Player player = event.getEntity();
             deadPlayers.add(player);
+            PlayerMoney.setCoins(player, 0);
             boolean allDead = new HashSet<>(deadPlayers).containsAll(zombies.getServer().getOnlinePlayers());
             if (allDead) {
                 player.teleport(Loc.lobby);
