@@ -63,6 +63,11 @@ public class Zombies extends JavaPlugin implements Listener {
         FastBoard board = new FastBoard(player);
         board.updateTitle(ChatColor.DARK_PURPLE + "Zombies Minigame");
         this.boards.put(player.getUniqueId(), board);
+        if(Rounds.gameOn){
+            if(!Rounds.deadPlayers.contains(player)){
+                Rounds.deadPlayers.add(player);
+            }
+        }
     }
 
     @EventHandler
