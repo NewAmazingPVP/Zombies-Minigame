@@ -5,6 +5,9 @@ api-version: 1.18
 depend:
   - Vault
 commands:
+  spawnpig:
+    description: Summons a pig
+    usage: /spawnpig <player> <amount>
   givemoney:
     description: Add money
     usage: /givemoney <Player> <money>
