@@ -11,11 +11,12 @@ public class NetheriteArmor {
     public static List<Material> getNetheriteArmorTypes() {
         return new ArrayList<>(List.of(
                 Material.NETHERITE_BOOTS,
+                Material.NETHERITE_LEGGINGS,
                 Material.NETHERITE_CHESTPLATE,
-                Material.NETHERITE_HELMET,
-                Material.NETHERITE_LEGGINGS
+                Material.NETHERITE_HELMET
         ));
     }
+
     public static double defensePoints(Material material) {
         switch(material) {
             case NETHERITE_BOOTS:

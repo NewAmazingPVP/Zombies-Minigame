@@ -10,11 +10,12 @@ public class DiamondArmor {
     public static List<Material> getDiamondArmorTypes() {
         return new ArrayList<>(List.of(
                 Material.DIAMOND_BOOTS,
+                Material.DIAMOND_LEGGINGS,
                 Material.DIAMOND_CHESTPLATE,
-                Material.DIAMOND_HELMET,
-                Material.DIAMOND_LEGGINGS
+                Material.DIAMOND_HELMET
         ));
     }
+
 
     public static double defensePoints(Material material) {
         switch(material) {

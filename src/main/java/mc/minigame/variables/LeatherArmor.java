@@ -11,11 +11,12 @@ public class LeatherArmor {
     public static List<Material> getLeatherArmorTypes() {
         return new ArrayList<>(List.of(
                 Material.LEATHER_BOOTS,
+                Material.LEATHER_LEGGINGS,
                 Material.LEATHER_CHESTPLATE,
-                Material.LEATHER_HELMET,
-                Material.LEATHER_LEGGINGS
+                Material.LEATHER_HELMET
         ));
     }
+
 
     public static double defensePoints(Material material) {
         switch(material) {

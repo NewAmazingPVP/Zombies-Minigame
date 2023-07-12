@@ -10,6 +10,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -26,12 +27,15 @@ public class ArmorSet implements CommandExecutor {
                 try {
                     String armorType = args[0];
                     if (armorType.equalsIgnoreCase("leather")) {
+                        List<ItemStack> leatherArmorContents = new ArrayList<>();
+
                         for (Material stack : LeatherArmor.getLeatherArmorTypes()) {
-                            Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
-                            meta.setUnbreakable(true);
+                            meta.addEnchant(Enchantment.BINDING_CURSE, 1, true);
+                            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS);
                             meta.setDisplayName(ChatColor.BLUE + "Leather Juggernaut");
+
                             if (meta != null) {
                                 meta.addAttributeModifier(
                                         Attribute.GENERIC_ARMOR, new AttributeModifier(
@@ -43,17 +47,22 @@ public class ArmorSet implements CommandExecutor {
                                         )
                                 );
                                 armor.setItemMeta(meta);
-
-                                player.getInventory().addItem(armor);
+                                leatherArmorContents.add(armor);
                             }
                         }
+
+                        Player player = (Player) sender;
+                        player.getInventory().setArmorContents(leatherArmorContents.toArray(new ItemStack[0]));
                     } else if (armorType.equalsIgnoreCase("diamond")) {
+                        List<ItemStack> diamondArmorContents = new ArrayList<>();
+
                         for (Material stack : DiamondArmor.getDiamondArmorTypes()) {
-                            Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
-                            meta.setUnbreakable(true);
+                            meta.addEnchant(Enchantment.BINDING_CURSE, 1, true);
+                            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS);
                             meta.setDisplayName(ChatColor.DARK_RED + "Assassin Suit");
+
                             if (meta != null) {
                                 meta.addAttributeModifier(
                                         Attribute.GENERIC_ARMOR, new AttributeModifier(
@@ -65,18 +74,23 @@ public class ArmorSet implements CommandExecutor {
                                         )
                                 );
                                 armor.setItemMeta(meta);
-
-                                player.getInventory().addItem(armor);
+                                diamondArmorContents.add(armor);
                             }
                         }
+
+                        Player player = (Player) sender;
+                        player.getInventory().setArmorContents(diamondArmorContents.toArray(new ItemStack[0]));
                     } else if (armorType.equalsIgnoreCase("netherite")) {
+                        List<ItemStack> netheriteArmorContents = new ArrayList<>();
+
                         for (Material stack : NetheriteArmor.getNetheriteArmorTypes()) {
-                            Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
-                            meta.setUnbreakable(true);
+                            meta.addEnchant(Enchantment.BINDING_CURSE, 1, true);
+                            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS);
                             meta.setDisplayName(ChatColor.MAGIC + "Netherite Juggernaut");
                             meta.setLore(Collections.singletonList(ChatColor.DARK_PURPLE + "RADIATION PROOF IF FULL SET"));
+
                             if (meta != null) {
                                 meta.addAttributeModifier(
                                         Attribute.GENERIC_ARMOR, new AttributeModifier(
@@ -88,10 +102,12 @@ public class ArmorSet implements CommandExecutor {
                                         )
                                 );
                                 armor.setItemMeta(meta);
-
-                                player.getInventory().addItem(armor);
+                                netheriteArmorContents.add(armor);
                             }
                         }
+
+                        Player player = (Player) sender;
+                        player.getInventory().setArmorContents(netheriteArmorContents.toArray(new ItemStack[0]));
                     } else if (armorType.equalsIgnoreCase("iron")) {
                         List<ItemStack> armorContents = new ArrayList<>();
 
@@ -99,7 +115,7 @@ public class ArmorSet implements CommandExecutor {
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
                             meta.addEnchant(Enchantment.BINDING_CURSE, 1, true);
-                            meta.addItemFlags(HIDE_ENCHANTS, HIDE_POTION_EFFECTS);
+                            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS);
                             meta.setDisplayName(ChatColor.GRAY + "Ironman Armor");
                             if (meta != null) {
                                 meta.addAttributeModifier(
@@ -118,12 +134,15 @@ public class ArmorSet implements CommandExecutor {
                             player.getInventory().setArmorContents(armorContents.toArray(new ItemStack[0]));
                         }
                     } else if (armorType.equalsIgnoreCase("gold")) {
+                        List<ItemStack> goldArmorContents = new ArrayList<>();
+
                         for (Material stack : GoldenArmor.getGoldenArmorTypes()) {
-                            Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
-                            meta.setUnbreakable(true);
+                            meta.addEnchant(Enchantment.BINDING_CURSE, 1, true);
+                            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS);
                             meta.setDisplayName(ChatColor.GOLD + "King's Wear");
+
                             if (meta != null) {
                                 meta.addAttributeModifier(
                                         Attribute.GENERIC_ARMOR, new AttributeModifier(
@@ -135,10 +154,13 @@ public class ArmorSet implements CommandExecutor {
                                         )
                                 );
                                 armor.setItemMeta(meta);
-
-                                player.getInventory().addItem(armor);
+                                goldArmorContents.add(armor);
                             }
                         }
+
+                        Player player = (Player) sender;
+                        player.getInventory().setArmorContents(goldArmorContents.toArray(new ItemStack[0]));
+
                     }
 
                 } catch (NumberFormatException e) {
