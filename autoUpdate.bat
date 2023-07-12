@@ -1,14 +1,14 @@
 @echo off
 
 REM Change to your repository directory
-cd "D:\Users\Parth\Documents\GitHub\Minigame"
+cd "C:\path\to\your\repository"
 
 REM Initialize Git if not already done
 git init
 
 REM Set your Git username and email (modify accordingly)
-git config user.name "NewAmazingPVP"
-git config user.email "gamingofpat@gmail.com"
+git config user.name "Your Name"
+git config user.email "yourname@example.com"
 
 REM Set the interval (in seconds) to check for changes
 set interval=1
