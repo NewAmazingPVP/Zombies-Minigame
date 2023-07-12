@@ -16,7 +16,7 @@ public class WaterDamage implements Listener {
 
         if (to.getBlock().getType() == Material.WATER && to.getBlock().getRelative(0, -1, 0).getType() != Material.WATER) {
             player.damage(2.0);
-            player.sendMessage("Damage!");
+            player.sendMessage("[\"\",{\"text\":\"\\u26a0 \",\"color\":\"dark_red\"},{\"text\":\"WARNING WATER RADIOACTIVE!\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\" \\u26a0\",\"color\":\"dark_red\"}]");
         }
     }
 }
