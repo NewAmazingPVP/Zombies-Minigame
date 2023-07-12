@@ -10,9 +10,9 @@ public class IronArmor {
     public static List<Material> getIronArmorTypes() {
         return new ArrayList<>(List.of(
                 Material.IRON_BOOTS,
+                Material.IRON_LEGGINGS,
                 Material.IRON_CHESTPLATE,
-                Material.IRON_HELMET,
-                Material.IRON_LEGGINGS
+                Material.IRON_HELMET
         ));
     }
     public static double defensePoints(Material material) {

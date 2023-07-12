@@ -8,11 +8,14 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
+
+import static org.bukkit.inventory.ItemFlag.*;
 
 public class ArmorSet implements CommandExecutor {
 
@@ -90,11 +93,13 @@ public class ArmorSet implements CommandExecutor {
                             }
                         }
                     } else if (armorType.equalsIgnoreCase("iron")) {
+                        List<ItemStack> armorContents = new ArrayList<>();
+
                         for (Material stack : IronArmor.getIronArmorTypes()) {
-                            Player player = (Player) sender;
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
-                            meta.setUnbreakable(true);
+                            meta.addEnchant(Enchantment.BINDING_CURSE, 1, true);
+                            meta.addItemFlags(HIDE_ENCHANTS, HIDE_POTION_EFFECTS);
                             meta.setDisplayName(ChatColor.GRAY + "Ironman Armor");
                             if (meta != null) {
                                 meta.addAttributeModifier(
@@ -107,9 +112,10 @@ public class ArmorSet implements CommandExecutor {
                                         )
                                 );
                                 armor.setItemMeta(meta);
-
-                                player.getInventory().addItem(armor);
+                                armorContents.add(armor);
                             }
+                            Player player = (Player) sender;
+                            player.getInventory().setArmorContents(armorContents.toArray(new ItemStack[0]));
                         }
                     } else if (armorType.equalsIgnoreCase("gold")) {
                         for (Material stack : GoldenArmor.getGoldenArmorTypes()) {
