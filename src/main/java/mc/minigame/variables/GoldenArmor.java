@@ -10,11 +10,12 @@ public class GoldenArmor {
     public static List<Material> getGoldenArmorTypes() {
         return new ArrayList<>(List.of(
                 Material.GOLDEN_BOOTS,
+                Material.GOLDEN_LEGGINGS,
                 Material.GOLDEN_CHESTPLATE,
-                Material.GOLDEN_HELMET,
-                Material.GOLDEN_LEGGINGS
+                Material.GOLDEN_HELMET
         ));
     }
+
 
     public static double defensePoints(Material material) {
         switch(material) {
