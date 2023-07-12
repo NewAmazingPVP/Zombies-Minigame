@@ -9,27 +9,13 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
-
 import static mc.minigame.Zombies.zombies;
 
 public class WaterDamage implements Listener {
 
     @EventHandler
-    public void onPickup(PlayerPickupItemEvent event) {
-        if (event.getItem().getItemStack().getType() == Material.GOLD_INGOT) {
-            Player player = event.getPlayer();
-            Integer amount = event.getItem().getItemStack().getAmount();
-            String message = ChatColor.GOLD + "+" + ChatColor.BOLD + amount + " Pickup Coins";
-            TextComponent textComponent = new TextComponent(message);
-            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
-            PlayerMoney.addCoins(player, amount);
+    public void onPlayerMove(PlayerMoveEvent event
 
-            Bukkit.getScheduler().runTaskLater(zombies, () -> {
-                ItemStack goldIngot = new ItemStack(Material.GOLD_INGOT, amount);
-                player.getInventory().removeItem(goldIngot);
-            }, 1);
-        }
     }
-}
