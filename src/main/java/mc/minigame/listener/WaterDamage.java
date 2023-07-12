@@ -14,7 +14,7 @@ public class WaterDamage implements Listener {
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
             player.damage(2.0);
-            player.sendMessage("Hello mother fucker");
+            player.sendMessage("[\"\",{\"text\":\"\\u26a0 \\u2622 \",\"color\":\"dark_red\"},{\"text\":\"WARNING WATER RADIOACTIVE\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\" \\u2622 \\u26a0\",\"color\":\"dark_red\"}]");
         }
     }
 }
