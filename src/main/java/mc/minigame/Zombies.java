@@ -45,7 +45,6 @@ public class Zombies extends JavaPlugin implements Listener {
         getCommand("setTimer").setExecutor(new TimerCommand());
         getCommand("startgame").setExecutor(new Start());
         getCommand("stopgame").setExecutor(new Stop());
-        getCommand("spawnpig").setExecutor(new PigCommand());
         setupEconomy();
         getServer().getScheduler().runTaskTimer(this, () -> {
             for (FastBoard board : this.boards.values()) {
