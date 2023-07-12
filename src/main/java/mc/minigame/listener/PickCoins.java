@@ -24,7 +24,7 @@ public class PickCoins implements Listener {
             String message = ChatColor.GOLD + "+" + ChatColor.BOLD + amount + " Pickup Coins";
             TextComponent textComponent = new TextComponent(message);
             player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
-            PlayerMoney.addCoins(player, amount);
+            PlayerMoney.addCoins(player,d amount);
 
             Bukkit.getScheduler().runTaskLater(zombies, () -> {
                 ItemStack goldIngot = new ItemStack(Material.GOLD_INGOT, amount);
