@@ -7,6 +7,8 @@ depend:
 commands:
   spawnpig:
     description: Summons a pig
+    aliases:
+      -sp
     usage: /spawnpig <player> <amount>
   givemoney:
     description: Add money
