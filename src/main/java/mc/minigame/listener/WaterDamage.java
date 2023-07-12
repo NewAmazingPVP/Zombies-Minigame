@@ -11,6 +11,10 @@ public class WaterDamage implements Listener {
 
     @EventHandler
     public void onPlayerMove(EntityToggleSwimEvent event) {
-        event.getEntity(). damage(2.0);
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            player.damage(2.0);
+            player.sendMessage("Hi");
+        }
     }
 }
