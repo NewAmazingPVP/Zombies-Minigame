@@ -23,8 +23,6 @@ git pull origin master
 REM Add all modified files
 git add -A
 
-
-
 REM Commit changes
 git commit -m "Automated commit"
 

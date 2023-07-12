@@ -23,9 +23,6 @@ git pull origin master
 REM Add all modified files
 git add -A
 
-REM Remove all deleted files
-git rm $(git ls-files --deleted)
-
 REM Commit changes
 git commit -m "Automated commit"
 
