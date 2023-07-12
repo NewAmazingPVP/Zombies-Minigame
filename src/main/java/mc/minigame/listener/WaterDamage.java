@@ -14,7 +14,7 @@ public class WaterDamage implements Listener {
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
             player.damage(2.0);
-            player.sendMessage("Hi");
+            player.sendMessage("Hello mother fucker");
         }
     }
 }
