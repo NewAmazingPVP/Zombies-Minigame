@@ -22,7 +22,7 @@ public class WaterDamage implements Listener {
         if (to.getBlock().getType() == Material.WATER && to.getBlock().getRelative(0, -1, 0).getType() != Material.WATER) {
             // Player stepped into water
             player.damage(2.0);
-            player.sendMessage("You took damage from stepping into water!");
+            player.sendMessage("Damage!");
         }
     }
 }
