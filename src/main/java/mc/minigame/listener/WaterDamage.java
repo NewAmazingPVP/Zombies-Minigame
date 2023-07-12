@@ -1,5 +1,6 @@
 package mc.minigame.listener;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -19,7 +20,7 @@ public class WaterDamage implements Listener {
 
         if (to.getBlock().getType() == Material.WATER) {
             player.damage(2.0);
-            player.sendMessage("[\"\",{\"text\":\"\\u26a0 \",\"color\":\"dark_red\"},{\"text\":\"WARNING WATER RADIOACTIVE!\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\" \\u26a0\",\"color\":\"dark_red\"}]");
+            player.sendMessage(ChatColor.DARK_RED + "WARNING WATER RADIOACTIVE!");
         }
     }
 }
