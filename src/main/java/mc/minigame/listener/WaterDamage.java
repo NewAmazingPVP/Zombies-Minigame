@@ -1,6 +1,8 @@
 package mc.minigame.listener;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,4 +30,5 @@ public class WaterDamage implements Listener {
             player.damage(2.0);
             player.sendMessage("[\"\",{\"text\":\"\\u26a0 \",\"color\":\"dark_red\"},{\"text\":\"WARNING WATER RADIOACTIVE!\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\" \\u26a0\",\"color\":\"dark_red\"}]");
         }
+    }
 }
