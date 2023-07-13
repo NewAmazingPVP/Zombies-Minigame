@@ -267,7 +267,7 @@ item18:
 
 menu-close-no-commands-no-lore:
   NAME: '&6Close the menu'
-  ID: redstone_lamp
+  ID: barrier
   LORE:
     - 'Create an item without a command,'
     - 'the GUI will just close.'
