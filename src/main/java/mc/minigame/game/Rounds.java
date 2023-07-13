@@ -56,7 +56,6 @@ public class Rounds {
     }
 
     public static void endRound() {
-        gameOn = false;
         // Check if there are more rounds to play or if the game is over
         boolean allDead = new HashSet<>(deadPlayers).containsAll(zombies.getServer().getOnlinePlayers());
         if (round < maxRounds && !allDead) {
@@ -67,6 +66,7 @@ public class Rounds {
             startRound();
             round++;
         } else if (allDead){
+            gameOn = false;
             for (Player p : zombies.getServer().getOnlinePlayers()) {
                 p.sendTitle(ChatColor.RED + "YOU LOST!", "");
                 p.teleport(Loc.lobby);
@@ -78,6 +78,7 @@ public class Rounds {
             roundEndTime = 0;
             ZombieCount.killAllZombies();
         } else {
+            gameOn = false;
             for (Player player : Bukkit.getOnlinePlayers()) {
                 player.sendTitle(ChatColor.GOLD + "YOU WON", "");
                 player.teleport(Loc.lobby);
