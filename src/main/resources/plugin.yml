@@ -5,6 +5,11 @@ api-version: 1.18
 depend:
   - Vault
 commands:
+  jail:
+    usage: /jail <player>
+    aliases:
+      - j
+    description: Puts a player into jail ;]
   givemoney:
     description: Add money
     usage: /givemoney <Player> <money>
