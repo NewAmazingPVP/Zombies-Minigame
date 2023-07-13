@@ -9,7 +9,7 @@ menu-settings:
   name: '&6Shop'
 
   # rows - the number of rows of the chest - REQUIRED
-  rows: 3
+  rows: 6
 
   # command - OPTIONAL (you can remove this or set it to '')
   # Bind multiple commands using ; (command: 'menu; m; me')
