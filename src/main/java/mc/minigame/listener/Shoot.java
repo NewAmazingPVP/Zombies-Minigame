@@ -59,11 +59,18 @@ public class Shoot implements Listener {
                 Entity target = getTargetEntityAtLocation(targetLocation);
                 if (target != null) {
                     if(target instanceof Zombie) {
-                        PlayerMoney.addCoins(player, 10);
-                        String message = ChatColor.GOLD + "+" + ChatColor.BOLD + "10 Hit Coins";
-                        TextComponent textComponent = new TextComponent(message);
-                        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
-                        damageTarget(player, target);
+                        if (event.getItem().getType() == Material.GOLDEN_HOE || event.getItem().getType() == Material.GOLDEN_SHOVEL) {
+                            ((LivingEntity) target).damage(Weapons.calculateDamageAmount(event.getItem().getType()), player);
+                            Location explosionLocation = target.getLocation();
+                            createExplosion(explosionLocation, Weapons.explosionRadius(event.getItem().getType()), player, event.getItem().getType());
+                        } else {
+                            PlayerMoney.addCoins(player, 10);
+                            String message = ChatColor.GOLD + "+" + ChatColor.BOLD + "10 Hit Coins";
+                            TextComponent textComponent = new TextComponent(message);
+                            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);
+                            damageTarget(player, target);
+                        }
+
                     }
 
                     break;
@@ -93,6 +100,24 @@ public class Shoot implements Listener {
         return null;
     }
 
+    private void createExplosion(Location location, double radius, Player player, Material material) {
+        Vector center = location.toVector();
+        for (Entity entity : location.getWorld().getEntities()) {
+            if (entity instanceof Zombie && entity.getLocation().distanceSquared(location) <= radius * radius) {
+                Vector velocity = entity.getLocation().toVector().subtract(center);
+                double distance = velocity.length();
+                if (distance != 0) {
+                    double force = (1 - distance / radius) * 2.0;
+                    if (Double.isFinite(force)) {
+                        entity.setVelocity(velocity.normalize().multiply(force));
+                        ((LivingEntity) entity).damage(Weapons.calculateDamageAmount(material), player);
+                    }
+                }
+            }
+        }
+    }
+
+
     private void damageTarget(Player player, Entity target) {
         double damageAmount = Weapons.calculateDamageAmount(player.getItemInHand().getType());
         ((LivingEntity) target).damage(damageAmount, player);
@@ -102,11 +127,14 @@ public class Shoot implements Listener {
         long currentTime = System.currentTimeMillis();
         if (cooldowns.containsKey(player)) {
             long cooldownEndTime = cooldowns.get(player);
-            return currentTime < cooldownEndTime;
+            if (currentTime < cooldownEndTime) {
+                return true;
+            } else {
+                cooldowns.remove(player);
+            }
         }
         return false;
     }
-
     private void applyCooldown(Player player) {
         double cooldownSeconds = Weapons.getCooldownDuration(player.getItemInHand().getType());
         if (cooldownSeconds > 0) {

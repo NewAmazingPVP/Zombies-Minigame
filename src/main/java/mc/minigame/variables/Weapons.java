@@ -76,9 +76,9 @@ public class Weapons {
             case IRON_SHOVEL: // Ultimate Shotgun
                 return 16.0;
             case GOLDEN_HOE: // Rocket Launcher
-                return 15.0;
+                return 7.50;
             case GOLDEN_SHOVEL: // Supreme Rocket Launcher
-                return 20.0;
+                return 11.0;
             case GOLDEN_PICKAXE: // Sniper
                 return 20.0;
             case FLINT_AND_STEEL: // Flamethrower
@@ -125,6 +125,16 @@ public class Weapons {
         }
     }
 
+    public static double explosionRadius(Material weaponType){
+        switch (weaponType) {
+            case GOLDEN_HOE:
+                return 2.5;
+            case GOLDEN_SHOVEL:
+                return 5.0;
+            default:
+                return 0.0;
+        }
+    }
 
     public Weapons() {
     }

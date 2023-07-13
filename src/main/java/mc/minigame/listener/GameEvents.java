@@ -3,11 +3,14 @@ package mc.minigame.listener;
 import mc.minigame.game.PlayerMoney;
 import mc.minigame.game.Rounds;
 import mc.minigame.variables.Loc;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
@@ -49,7 +52,16 @@ public class GameEvents implements Listener {
     public void onPlayerRespawn(PlayerRespawnEvent event) {
         if (Rounds.gameOn) {
             event.setRespawnLocation(Loc.deadLobby);
+            event.getPlayer().sendTitle(ChatColor.RED + "YOU DIED!", "");
         }
     }
+
+    @EventHandler
+    public void onPlayerInteract(PlayerInteractEvent event) {
+        if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
+            event.setCancelled(true);
+        }
+    }
+
 
 }
