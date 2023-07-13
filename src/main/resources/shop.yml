@@ -273,3 +273,9 @@ menu-close-no-commands-no-lore:
     - 'the GUI will just close.'
   POSITION-X: 9
   POSITION-Y: 3
+
+emptyslot:
+  NAME:
+  ID: red_stained_glass_pane
+  POSITION-X: 1
+  POSITION-Y: 3
