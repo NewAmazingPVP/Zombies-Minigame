@@ -61,7 +61,7 @@ public class Rounds {
         boolean allDead = new HashSet<>(deadPlayers).containsAll(zombies.getServer().getOnlinePlayers());
         if (round < maxRounds && !allDead) {
             for (Player p : zombies.getServer().getOnlinePlayers()) {
-                p.sendTitle(ChatColor.GREEN + "Round " + round++, "");
+                p.sendTitle(ChatColor.GREEN + "Round " + getRounds()+1, "");
             }
             startRound();
             round++;
