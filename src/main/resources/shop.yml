@@ -9,7 +9,7 @@ menu-settings:
   name: '&6Shop'
 
   # rows - the number of rows of the chest - REQUIRED
-  rows: 6
+  rows: 2
 
   # command - OPTIONAL (you can remove this or set it to '')
   # Bind multiple commands using ; (command: 'menu; m; me')
@@ -269,4 +269,4 @@ menu-close-no-commands-no-lore:
     - 'Create an item without a command,'
     - 'the GUI will just close.'
   POSITION-X: 9
-  POSITION-Y: 6
+  POSITION-Y: 2
