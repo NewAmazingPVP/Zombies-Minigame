@@ -1,0 +1,275 @@
+######################
+#+                  +#
+#   MENU SETTINGS    #
+#+                  +#
+######################
+
+menu-settings:
+  # name - appears as the title - REQUIRED
+  name: '&6Shop'
+
+  # rows - the number of rows of the chest - REQUIRED
+  rows: 3
+
+  # command - OPTIONAL (you can remove this or set it to '')
+  # Bind multiple commands using ; (command: 'menu; m; me')
+  command: 'shopmenu'
+
+  # auto-refresh - OPTIONAL
+  # How frequently the menu will be refreshed, in seconds.
+  # Useful if you have variables in items' descriptions.
+  auto-refresh: 5
+
+  # This command will be executed when the menu is opened.
+  # Supports all the icon command types.
+  open-action: 'tell: &eShop menu for items.'
+
+  # open-with-item - OPTIONAL
+  # The menu will open only by right-clicking with orange wool [35:1]
+  open-with-item:
+    id: wool:1
+    left-click: false
+    right-click: true
+
+
+######################
+#+                  +#
+#       ITEMS        #
+#+                  +#
+######################
+
+
+economy-give1:
+  COMMAND: 'giveset leather'
+  NAME: '&9Leather Juggernaut'
+  LORE:
+    - 'Click to get this armor'
+    - 'Price: $50'
+  ID: leather_chestplate
+  PRICE: 50
+  POSITION-X: 1
+  POSITION-Y: 1
+
+economy-give2:
+  COMMAND: 'giveset gold'
+  NAME: '&6Kings Wear'
+  LORE:
+    - 'Click to get this armor'
+    - 'Price: $250'
+  ID: gold_chestplate
+  PRICE: 250
+  POSITION-X: 2
+  POSITION-Y: 1
+
+economy-give3:
+  COMMAND: 'giveset iron'
+  NAME: '&fIronman Armor'
+  LORE:
+    - 'Click to get this armor'
+    - 'Price: $500'
+  ID: iron_chestplate
+  PRICE: 500
+  POSITION-X: 3
+  POSITION-Y: 1
+
+economy-give4:
+  COMMAND: 'giveset diamond'
+  NAME: '&4Assassin Suit'
+  LORE:
+    - 'Click to get this armor'
+    - 'Price: $2000'
+  ID: diamond_chestplate
+  PRICE: 2000
+  POSITION-X: 4
+  POSITION-Y: 1
+
+economy-give5:
+  COMMAND: 'giveset netherite'
+  NAME: '&5Radiation Armor'
+  LORE:
+    - 'Click to get this armor'
+    - 'Price: $10000'
+  ID: diamond_chestplate
+  PRICE: 10000
+  POSITION-X: 5
+  POSITION-Y: 1
+
+economy-give6:
+  COMMAND: 'minecraft:give @s arrow 32'
+  NAME: '&eAmmo'
+  LORE:
+    - 'Click to get ammo'
+    - 'Quantity: 32'
+    - 'Price: $50'
+  ID: arrow
+  PRICE: 50
+  POSITION-X: 6
+  POSITION-Y: 1
+
+item7:
+  COMMAND: 'giveweapon wooden_shovel'
+  NAME: '&ePistol I'
+  LORE:
+    - 'Click to get weapon'
+    - 'Price: $100'
+    - 'Damage: 6.0'
+    - 'Reload Speed: 0.5s'
+  ID: wood_spade
+  PRICE: 100
+  POSITION-X: 7
+  POSITION-Y: 1
+
+item8:
+  COMMAND: 'giveweapon stone_hoe'
+  NAME: '&6Supreme Pistol'
+  LORE:
+    - 'Click to get weapon'
+    - 'Price: $150'
+    - 'Damage: 6.0'
+    - 'Reload Speed: 0.4s'
+  ID: stone_hoe
+  PRICE: 150
+  POSITION-X: 8
+  POSITION-Y: 1
+
+item9:
+  COMMAND: 'giveweapon stone_shovel'
+  NAME: '&aRifle'
+  LORE:
+    - 'Click to get weapon'
+    - 'Price: $200'
+    - 'Damage: 6.0'
+    - 'Reload Speed: 0.2s'
+  ID: stone_spade
+  PRICE: 200
+  POSITION-X: 9
+  POSITION-Y: 1
+
+item10:
+  COMMAND: 'giveweapon shears'
+  NAME: '&eSuperb Rifle'
+  LORE:
+    - 'Click to get weapon'
+    - 'Price: $250'
+    - 'Damage: 8.0'
+    - 'Reload Speed: 0.2s'
+  ID: shears
+  PRICE: 250
+  POSITION-X: 1
+  POSITION-Y: 2
+
+item11:
+  COMMAND: 'giveweapon iron_hoe'
+  NAME: '&cShotgun'
+  LORE:
+    - 'Click to get weapon'
+    - 'Price: $400'
+    - 'Damage: 12.0'
+    - 'Reload Speed: 1.4s'
+  ID: iron_hoe
+  PRICE: 400
+  POSITION-X: 2
+  POSITION-Y: 2
+
+item12:
+  COMMAND: 'giveweapon iron_shovel'
+  NAME: '&4Ultimate Shotgun'
+  LORE:
+    - 'Click to get weapon'
+    - 'Price: $600'
+    - 'Damage: 16.0'
+    - 'Reload Speed: 1.0s'
+  ID: iron_spade
+  PRICE: 600
+  POSITION-X: 3
+  POSITION-Y: 2
+
+item13:
+  COMMAND: 'giveweapon golden_hoe'
+  NAME: '&dRocket Launcher'
+  LORE:
+    - 'Click to get weapon'
+    - 'Price: $1000'
+    - 'Damage: 15.0'
+    - 'Reload Speed: 2.0s'
+  ID: gold_hoe
+  PRICE: 1000
+  POSITION-X: 4
+  POSITION-Y: 2
+
+item14:
+  COMMAND: 'giveweapon golden_shovel'
+  NAME: '&5Supreme Rocket Launcher'
+  LORE:
+    - 'Click to get weapon'
+    - 'Price: $1500'
+    - 'Damage: 20.0'
+    - 'Reload Speed: 1.5s'
+  ID: gold_spade
+  PRICE: 1500
+  POSITION-X: 5
+  POSITION-Y: 2
+
+item15:
+  COMMAND: 'giveweapon golden_pickaxe'
+  NAME: '&bSniper'
+  LORE:
+    - 'Click to get weapon'
+    - 'Price: $2000'
+    - 'Damage: 20.0'
+    - 'Reload Speed: 1.5s'
+  ID: gold_pickaxe
+  PRICE: 2000
+  POSITION-X: 6
+  POSITION-Y: 2
+
+item16:
+  COMMAND: 'giveweapon flint_and_steel'
+  NAME: '&cFlamethrower'
+  LORE:
+    - 'Click to get weapon'
+    - 'Price: $500'
+    - 'Damage: 2.0'
+    - 'Reload Speed: 0.1s'
+  ID: flint_and_steel
+  PRICE: 500
+  POSITION-X: 7
+  POSITION-Y: 2
+
+item17:
+  COMMAND: 'giveweapon diamond_hoe'
+  NAME: '&9Venerable Gun'
+  LORE:
+    - 'Click to get weapon'
+    - 'Price: $2000'
+    - 'Damage: 15.0'
+    - 'Reload Speed: 0.9s'
+  ID: diamond_hoe
+  PRICE: 2000
+  POSITION-X: 8
+  POSITION-Y: 2
+
+item18:
+  COMMAND: 'giveweapon diamond_pickaxe'
+  NAME: '&1Superb Venerable Gun'
+  LORE:
+    - 'Click to get weapon'
+    - 'Price: $3000'
+    - 'Damage: 30.0'
+    - 'Reload Speed: 1.5s'
+  ID: diamond_pickaxe
+  PRICE: 3000
+  POSITION-X: 9
+  POSITION-Y: 2
+
+
+
+
+menu-close-no-commands-no-lore:
+  NAME: '&6Close the menu'
+  ID: redstone_lamp
+  LORE:
+    - 'Create an item without a command,'
+    - 'the GUI will just close.'
+  POSITION-X: 9
+  POSITION-Y: 3
