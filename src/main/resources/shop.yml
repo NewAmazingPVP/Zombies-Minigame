@@ -9,7 +9,7 @@ menu-settings:
   name: '&6Shop'
 
   # rows - the number of rows of the chest - REQUIRED
-  rows: 3
+  rows: 6
 
   # command - OPTIONAL (you can remove this or set it to '')
   # Bind multiple commands using ; (command: 'menu; m; me')
@@ -262,9 +262,6 @@ item18:
   POSITION-X: 9
   POSITION-Y: 2
 
-
-
-
 menu-close-no-commands-no-lore:
   NAME: '&6Close the menu'
   ID: barrier
@@ -274,8 +271,4 @@ menu-close-no-commands-no-lore:
   POSITION-X: 9
   POSITION-Y: 3
 
-emptyslot:
-  NAME:
-  ID: red_stained_glass_pane
-  POSITION-X: 1
-  POSITION-Y: 3
+
