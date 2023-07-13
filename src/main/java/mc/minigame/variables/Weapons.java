@@ -72,9 +72,9 @@ public class Weapons {
             case SHEARS: // Superb Rifle
                 return 8.0;
             case IRON_HOE: // Shotgun
-                return 4.5 * 10;
+                return 12.0;
             case IRON_SHOVEL: // Ultimate Shotgun
-                return 4.5 * 10;
+                return 16.0;
             case GOLDEN_HOE: // Rocket Launcher
                 return 15.0;
             case GOLDEN_SHOVEL: // Supreme Rocket Launcher
