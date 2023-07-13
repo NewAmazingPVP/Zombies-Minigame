@@ -31,3 +31,6 @@ commands:
   stopgame:
     description: Stop the game
     usage: /stopgame
+  giveweapon:
+    description: Give weapon
+    usage: /giveweapon <item name>
