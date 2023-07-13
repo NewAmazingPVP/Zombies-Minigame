@@ -262,15 +262,68 @@ item18:
   POSITION-X: 9
   POSITION-Y: 2
 
-emptyslot:
+item19:
   NAME: 'Empty Slot'
   LORE:
-    - 'Click to get weapon'
-    - 'Price: $3000'
-    - 'Damage: 30.0'
-    - 'Reload Speed: 1.5s'
+    - 'Empty slot'
   ID: stained_glass_pane
   POSITION-X: 1
+  POSITION-Y: 3
+
+item20:
+  NAME: 'Empty Slot'
+  LORE:
+    - 'Empty slot'
+  ID: stained_glass_pane
+  POSITION-X: 2
+  POSITION-Y: 3
+
+item21:
+  NAME: 'Empty Slot'
+  LORE:
+    - 'Empty slot'
+  ID: stained_glass_pane
+  POSITION-X: 3
+  POSITION-Y: 3
+
+item22:
+  NAME: 'Empty Slot'
+  LORE:
+    - 'Empty slot'
+  ID: stained_glass_pane
+  POSITION-X: 4
+  POSITION-Y: 3
+
+item23:
+  NAME: 'Empty Slot'
+  LORE:
+    - 'Empty slot'
+  ID: stained_glass_pane
+  POSITION-X: 5
+  POSITION-Y: 3
+
+item24:
+  NAME: 'Empty Slot'
+  LORE:
+    - 'Empty slot'
+  ID: stained_glass_pane
+  POSITION-X: 6
+  POSITION-Y: 3
+
+item25:
+  NAME: 'Empty Slot'
+  LORE:
+    - 'Empty slot'
+  ID: stained_glass_pane
+  POSITION-X: 7
+  POSITION-Y: 3
+
+item26:
+  NAME: 'Empty Slot'
+  LORE:
+    - 'Empty slot'
+  ID: stained_glass_pane
+  POSITION-X: 8
   POSITION-Y: 3
 
 menu-close-no-commands-no-lore:
