@@ -60,8 +60,9 @@ public class Rounds {
         // Check if there are more rounds to play or if the game is over
         boolean allDead = new HashSet<>(deadPlayers).containsAll(zombies.getServer().getOnlinePlayers());
         if (round < maxRounds && !allDead) {
+            int nextRound = round + 1;
             for (Player p : zombies.getServer().getOnlinePlayers()) {
-                p.sendTitle(ChatColor.GREEN + "Round " + getRounds()+1, "");
+                p.sendTitle(ChatColor.GREEN + "Round " + nextRound, "");
             }
             startRound();
             round++;
