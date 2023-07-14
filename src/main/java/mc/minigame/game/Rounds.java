@@ -30,6 +30,9 @@ public class Rounds {
 
     private static BukkitRunnable roundTask;
 
+    private static BukkitRunnable task;
+
+
     public static int getRounds() {
         return round;
     }
@@ -113,12 +116,20 @@ public class Rounds {
     }
 
     public static void pauseRound() {
+        task = new BukkitRunnable() {
+            @Override
+            public void run() {
+                roundEndTime += 50;
+            }
+        };
+        task.runTaskTimer(zombies, 0, 1);
         if (gameOn) {
             gameOn = false;
             for (Player player : Bukkit.getOnlinePlayers()) {
                 saveInventory(player);
                 player.setGameMode(GameMode.SPECTATOR);
                 player.sendTitle(ChatColor.YELLOW + "Round Paused", "");
+                player.getInventory().clear();
             }
             if (roundTask != null) {
                 roundTask.cancel();
@@ -136,6 +147,7 @@ public class Rounds {
             }
             if (roundTask != null) {
                 long currentTime = System.currentTimeMillis();
+                task.cancel();
                 long remainingTime = roundEndTime - currentTime;
                 if (remainingTime > 0) {
                     roundTask = new BukkitRunnable() {
