@@ -1,9 +1,9 @@
 name: Java Build and Release
 
 on:
-  push:
-    branches:
-      - main
+  push: {branches: ["master", "main"]}
+
+
 
 jobs:
   build:
