@@ -28,6 +28,8 @@ public class Rounds {
     public static List<Player> deadPlayers = new ArrayList<>();
     public static Map<Player, ItemStack[]> savedInventories = new HashMap<>();
 
+    private static BukkitRunnable roundTask;
+
     public static int getRounds() {
         return round;
     }
@@ -46,7 +48,7 @@ public class Rounds {
         int delay = 20 * 15 + (20 * 15 * round);
         roundEndTime = System.currentTimeMillis() + delay * 50;
 
-        BukkitRunnable roundTask = new BukkitRunnable() {
+        roundTask = new BukkitRunnable() {
             @Override
             public void run() {
                 if (gameOn) {
@@ -118,6 +120,9 @@ public class Rounds {
                 player.setGameMode(GameMode.SPECTATOR);
                 player.sendTitle(ChatColor.YELLOW + "Round Paused", "");
             }
+            if (roundTask != null) {
+                roundTask.cancel();
+            }
         }
     }
 
@@ -128,6 +133,21 @@ public class Rounds {
                 restoreInventory(player);
                 player.setGameMode(GameMode.SURVIVAL);
                 player.sendTitle(ChatColor.GREEN + "Round Resumed", "");
+            }
+            if (roundTask != null) {
+                long currentTime = System.currentTimeMillis();
+                long remainingTime = roundEndTime - currentTime;
+                if (remainingTime > 0) {
+                    roundTask = new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            if (gameOn) {
+                                endRound();
+                            }
+                        }
+                    };
+                    roundTask.runTaskLater(zombies, remainingTime / 50);
+                }
             }
         }
     }
