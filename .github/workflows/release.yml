@@ -39,6 +39,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./target/minigame-1.0.jar
-          asset_name: minigame-1.0.jar
+          asset_path: ./target/Minigame-1.0.jar
+          asset_name: Minigame-1.0.jar
           asset_content_type: application/java-archive
