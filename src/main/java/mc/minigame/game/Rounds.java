@@ -48,7 +48,7 @@ public class Rounds {
         ZombieCount.killAllZombies();
         Spawn.zombies(5 + (2 * round), Loc.mapEdgeloc1, Loc.mapEdgeloc2, (0.23 + (0.02 * round)), (2.0 + (0.2 * round)), (20.0 + (2 * round)), (0.0 + (0.01 * round)), (4.0 + (0.2 * round)), (0.0 + (0.01 * round)));
 
-        int delay = 20 * 15 + (20 * 15 * round);
+        int delay = 20 * 15 + (20 * 15 * round); // 20 ticks converting to ticks from seconds
         roundEndTime = System.currentTimeMillis() + delay * 50;
 
         roundTask = new BukkitRunnable() {
