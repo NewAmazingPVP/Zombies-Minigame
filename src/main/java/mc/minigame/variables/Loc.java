@@ -10,4 +10,5 @@ public class Loc {
     public static Location startLoc = new Location(Bukkit.getWorld("world"), -38.0, -19.0, -58.0);
     public static Location lobby = new Location(Bukkit.getWorld("world"), -220.5, -48.0, -246.5);
     public static Location jail = new Location(Bukkit.getWorld("world"), -38, -19, -92);
+    public static Location hang = new Location(Bukkit.getWorld("world"), -37, -11, -101);
 }

@@ -5,10 +5,11 @@ api-version: 1.18
 depend:
   - Vault
 commands:
+  haing:
+    usage: /hang <player>
+    description: Use this to "not execute" players ;]
   jailtp:
     usage: /jailtp <player>
-    aliases:
-      - j
     description: Puts a player into jail ;]
   givemoney:
     description: Add money
