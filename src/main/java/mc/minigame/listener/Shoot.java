@@ -60,7 +60,7 @@ public class Shoot implements Listener {
                 if (target != null) {
                     if(target instanceof Zombie) {
                         if (event.getItem().getType() == Material.GOLDEN_HOE || event.getItem().getType() == Material.GOLDEN_SHOVEL) {
-                            ((LivingEntity) target).damage(Weapons.calculateDamageAmount(event.getItem().getType()), player);
+                            ((LivingEntity) target).damage(Weapons.calculateDamageAmount(event.getItem().getType()));
                             Location explosionLocation = target.getLocation();
                             createExplosion(explosionLocation, Weapons.explosionRadius(event.getItem().getType()), player, event.getItem().getType());
                         } else {
@@ -110,7 +110,7 @@ public class Shoot implements Listener {
                     double force = (1 - distance / radius) * 2.0;
                     if (Double.isFinite(force)) {
                         entity.setVelocity(velocity.normalize().multiply(force));
-                        ((LivingEntity) entity).damage(Weapons.calculateDamageAmount(material), player);
+                        ((LivingEntity) entity).damage(Weapons.calculateDamageAmount(material));
                     }
                 }
             }
@@ -120,7 +120,7 @@ public class Shoot implements Listener {
 
     private void damageTarget(Player player, Entity target) {
         double damageAmount = Weapons.calculateDamageAmount(player.getItemInHand().getType());
-        ((LivingEntity) target).damage(damageAmount, player);
+        ((LivingEntity) target).damage(damageAmount);
     }
 
     private boolean hasCooldown(Player player) {

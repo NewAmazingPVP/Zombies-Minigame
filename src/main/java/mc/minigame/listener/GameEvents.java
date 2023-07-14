@@ -4,15 +4,16 @@ import mc.minigame.game.PlayerMoney;
 import mc.minigame.game.Rounds;
 import mc.minigame.variables.Loc;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.AnimalTamer;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerItemDamageEvent;
-import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.player.*;
 
 import java.util.HashSet;
 
@@ -57,12 +58,12 @@ public class GameEvents implements Listener {
     }
 
     @EventHandler
-    public void onPlayerInteract(PlayerInteractEvent event) {
+    public void onPlayerDamage(EntityDamageByEntityEvent event) {
         if(Rounds.gameOn) {
-            if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
+            if ((event.getDamager() instanceof Player) && (event.getEntity() instanceof Zombie)){
+                ((Zombie) event.getEntity()).damage(0.1);
                 event.setCancelled(true);
             }
         }
     }
-
 }
