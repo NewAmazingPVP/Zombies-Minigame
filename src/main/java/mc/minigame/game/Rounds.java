@@ -123,43 +123,33 @@ public class Rounds {
             }
         };
         task.runTaskTimer(zombies, 0, 1);
-        if (gameOn) {
-            gameOn = false;
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                saveInventory(player);
-                player.setGameMode(GameMode.SPECTATOR);
-                player.sendTitle(ChatColor.YELLOW + "Round Paused", "");
-                player.getInventory().clear();
-            }
-            if (roundTask != null) {
-                roundTask.cancel();
-            }
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            saveInventory(player);
+            player.getInventory().clear();
+        }
+        if (roundTask != null) {
+            roundTask.cancel();
         }
     }
 
     public static void unpauseRound() {
-        if (!gameOn) {
-            gameOn = true;
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                restoreInventory(player);
-                player.setGameMode(GameMode.SURVIVAL);
-                player.sendTitle(ChatColor.GREEN + "Round Resumed", "");
-            }
-            if (roundTask != null) {
-                long currentTime = System.currentTimeMillis();
-                task.cancel();
-                long remainingTime = roundEndTime - currentTime;
-                if (remainingTime > 0) {
-                    roundTask = new BukkitRunnable() {
-                        @Override
-                        public void run() {
-                            if (gameOn) {
-                                endRound();
-                            }
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            restoreInventory(player);
+        }
+        if (roundTask != null) {
+            long currentTime = System.currentTimeMillis();
+            task.cancel();
+            long remainingTime = roundEndTime - currentTime;
+            if (remainingTime > 0) {
+                roundTask = new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        if (gameOn) {
+                            endRound();
                         }
-                    };
-                    roundTask.runTaskLater(zombies, remainingTime / 50);
-                }
+                    }
+                };
+                roundTask.runTaskLater(zombies, remainingTime / 50);
             }
         }
     }
