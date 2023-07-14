@@ -9,10 +9,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Iterator;
-
+import java.util.Map;
 
 import mc.minigame.variables.Loc;
 
@@ -24,7 +25,8 @@ public class Rounds {
     public static int maxRounds;
     public static boolean gameOn = false;
 
-    public static List<Player> deadPlayers = new ArrayList<>();;
+    public static List<Player> deadPlayers = new ArrayList<>();
+    public static Map<Player, ItemStack[]> savedInventories = new HashMap<>();
 
     public static int getRounds() {
         return round;
@@ -39,10 +41,10 @@ public class Rounds {
             iterator.remove();
         }
         ZombieCount.killAllZombies();
-        Spawn.zombies(5 + (2 * round), Loc.mapEdgeloc1, Loc.mapEdgeloc2, (0.23 + (0.02*round)), (2.0 + (0.2*round)), (20.0 + (2*round)), (0.0 + (0.01*round)), (4.0 + (0.2*round)), (0.0 + (0.01*round)));
+        Spawn.zombies(5 + (2 * round), Loc.mapEdgeloc1, Loc.mapEdgeloc2, (0.23 + (0.02 * round)), (2.0 + (0.2 * round)), (20.0 + (2 * round)), (0.0 + (0.01 * round)), (4.0 + (0.2 * round)), (0.0 + (0.01 * round)));
 
         int delay = 20 * 15 + (20 * 15 * round);
-        roundEndTime = System.currentTimeMillis() + delay*50;
+        roundEndTime = System.currentTimeMillis() + delay * 50;
 
         BukkitRunnable roundTask = new BukkitRunnable() {
             @Override
@@ -65,11 +67,12 @@ public class Rounds {
             }
             startRound();
             round++;
-        } else if (allDead){
+        } else if (allDead) {
             gameOn = false;
             for (Player p : zombies.getServer().getOnlinePlayers()) {
                 p.sendTitle(ChatColor.RED + "YOU LOST!", "");
                 p.teleport(Loc.lobby);
+                saveInventory(p); // Save player inventory
                 p.getInventory().clear();
                 PlayerMoney.setCoins(p, 0);
             }
@@ -82,6 +85,7 @@ public class Rounds {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 player.sendTitle(ChatColor.GOLD + "YOU WON", "");
                 player.teleport(Loc.lobby);
+                saveInventory(player); // Save player inventory
                 player.getInventory().clear();
                 PlayerMoney.setCoins(player, 0);
             }
@@ -98,12 +102,46 @@ public class Rounds {
         return (int) Math.max(timeLeft / 1000, 0); // Convert milliseconds to seconds
     }
 
-    public static int getMaxRounds(){
+    public static int getMaxRounds() {
         return maxRounds;
     }
 
-    public static int round(){
+    public static int round() {
         return round;
     }
 
+    public static void pauseRound() {
+        if (gameOn) {
+            gameOn = false;
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                saveInventory(player);
+                player.setGameMode(GameMode.SPECTATOR);
+                player.sendTitle(ChatColor.YELLOW + "Round Paused", "");
+            }
+        }
+    }
+
+    public static void unpauseRound() {
+        if (!gameOn) {
+            gameOn = true;
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                restoreInventory(player);
+                player.setGameMode(GameMode.SURVIVAL);
+                player.sendTitle(ChatColor.GREEN + "Round Resumed", "");
+            }
+        }
+    }
+
+    private static void saveInventory(Player player) {
+        savedInventories.put(player, player.getInventory().getContents().clone());
+        player.getInventory().clear();
+    }
+
+    private static void restoreInventory(Player player) {
+        ItemStack[] savedInventory = savedInventories.get(player);
+        if (savedInventory != null) {
+            player.getInventory().setContents(savedInventory.clone());
+            savedInventories.remove(player);
+        }
+    }
 }

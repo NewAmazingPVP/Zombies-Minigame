@@ -48,6 +48,8 @@ public class Zombies extends JavaPlugin implements Listener {
         getCommand("stopgame").setExecutor(new Stop());
         getCommand("jailtp").setExecutor(new Jail());
         getCommand("giveweapon").setExecutor(new Gears());
+        getCommand("pauseround").setExecutor(new PauseRound());
+        getCommand("unpauseround").setExecutor(new UnpauseRound());
 
         setupEconomy();
         getServer().getScheduler().runTaskTimer(this, () -> {

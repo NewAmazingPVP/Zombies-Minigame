@@ -34,3 +34,9 @@ commands:
   giveweapon:
     description: Give weapon
     usage: /giveweapon <item name>
+  pauseround:
+    description: Pause the game
+    usage: /pauseround
+  unpauseround:
+    description: Resume the game
+    usage: /unpauseround
