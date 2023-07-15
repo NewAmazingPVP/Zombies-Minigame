@@ -22,7 +22,7 @@ public class AutoUpload {
                     checkForNewRelease();
                 } catch (Exception e) {}
             }
-        }.runTaskTimer(zombies, 0L, 1L);
+        }.runTaskTimerAsynchronously(zombies, 0L, 1L);
     }
 
     private static void checkForNewRelease(){
