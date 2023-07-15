@@ -2,6 +2,7 @@ package mc.minigame.utility;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.bukkit.ChatColor;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.yaml.snakeyaml.Yaml;
 
@@ -85,7 +86,7 @@ public class AutoUpload {
                 System.out.println(downloadUrl);
                 if (!(Objects.equals(downloadUrl, defaultUrl)) && downloadUrl != null) {
                     System.out.println("Makes sense");
-                    zombies.getLogger().info("New plugin release available. Updating plugin...");
+                    zombies.getServer().broadcastMessage(ChatColor.GREEN + "New plugin release available. Updating plugin...");
                     updatePlugin(downloadUrl, "Minigame");
                 }
             } else {
@@ -110,8 +111,9 @@ public class AutoUpload {
                 out.write(buffer, 0, bytesRead);
             }
             defaultUrl = downloadUrl;
+            zombies.getServer().broadcastMessage(ChatColor.AQUA + "Plugin update, restart server now...");
         } catch (IOException e) {
-            System.out.println("Failed to download plugin: " + e.getMessage());
+            zombies.getServer().broadcastMessage(ChatColor.RED + "Failed to download plugin: " + e.getMessage());
             e.printStackTrace();
         }
     }
