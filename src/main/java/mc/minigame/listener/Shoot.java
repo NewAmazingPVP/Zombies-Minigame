@@ -62,7 +62,7 @@ public class Shoot implements Listener {
                         if (event.getItem().getType() == Material.GOLDEN_HOE || event.getItem().getType() == Material.GOLDEN_SHOVEL) {
                             ((LivingEntity) target).damage(Weapons.calculateDamageAmount(event.getItem().getType()));
                             Location explosionLocation = target.getLocation();
-                            createExplosion(explosionLocation, Weapons.explosionRadius(event.getItem().getType()), player, event.getItem().getType());
+                            createExplosion(explosionLocation, Weapons.explosionRadius(event.getItem().getType()), event.getItem().getType());
                         } else {
                             PlayerMoney.addCoins(player, 10);
                             String message = ChatColor.GOLD + "+" + ChatColor.BOLD + "10 Hit Coins";
@@ -100,7 +100,7 @@ public class Shoot implements Listener {
         return null;
     }
 
-    private void createExplosion(Location location, double radius, Player player, Material material) {
+    private void createExplosion(Location location, double radius, Material material) {
         Vector center = location.toVector();
         for (Entity entity : location.getWorld().getEntities()) {
             if (entity instanceof Zombie && entity.getLocation().distanceSquared(location) <= radius * radius) {
