@@ -23,7 +23,7 @@ public class AutoUpload {
                 try {
                     checkForNewRelease();
                 } catch (Exception e) {
-                    //zombies.getLogger().("Failed to check for new releases");
+                    zombies.getLogger().info("Failed to check for new releases");
                 }
             }
         }.runTaskTimerAsynchronously(zombies, 0L, 1L);
@@ -66,11 +66,11 @@ public class AutoUpload {
                 }
             }
             if (getReleaseNumber() > getCurrentNumber() && downloadUrl != null) {
-                //zombies.getLogger().("New plugin release available. Updating plugin...");
-                updatePlugin(downloadUrl, "pluginName.jar"); // Replace "pluginName" with the appropriate name
+                zombies.getLogger().info("New plugin release available. Updating plugin...");
+                updatePlugin(downloadUrl, "pluginName.jar");
             }
         } catch (IOException e) {
-            //logger.error("Failed to check for new releases", e);
+            zombies.getLogger().info("Failed to check for new releases");
         }
     }
 
@@ -85,9 +85,9 @@ public class AutoUpload {
                 out.write(buffer, 0, bytesRead);
             }
             updateCurrentNumber(getReleaseNumber());
-            //logger.info("Plugin updated successfully.");
+            zombies.getLogger().info("Plugin updated successfully.");
         } catch (IOException e) {
-            //logger.error("Failed to download plugin: " + e.getMessage(), e);
+            zombies.getLogger().info("Failed to download plugin: " + e.getMessage());
         }
     }
 }
