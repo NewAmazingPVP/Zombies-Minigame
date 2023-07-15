@@ -33,18 +33,13 @@ public class NetheriteArmor {
     }
 
     public static EquipmentSlot slot(Material material) {
-        switch(material) {
-            case NETHERITE_BOOTS:
-                return EquipmentSlot.FEET;
-            case NETHERITE_HELMET:
-                return EquipmentSlot.HEAD;
-            case NETHERITE_CHESTPLATE:
-                return EquipmentSlot.CHEST;
-            case NETHERITE_LEGGINGS:
-                return EquipmentSlot.LEGS;
-            default:
-                return null;
-        }
+        return switch (material) {
+            case NETHERITE_BOOTS -> EquipmentSlot.FEET;
+            case NETHERITE_HELMET -> EquipmentSlot.HEAD;
+            case NETHERITE_CHESTPLATE -> EquipmentSlot.CHEST;
+            case NETHERITE_LEGGINGS -> EquipmentSlot.LEGS;
+            default -> null;
+        };
     }
 
 }

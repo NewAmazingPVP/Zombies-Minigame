@@ -22,7 +22,7 @@ public class ZombiesSpawn implements CommandExecutor {
                     Location loc1 = new Location(player.getWorld(), 50.0, -21.0, -120.0);
                     Location loc2 = new Location(player.getWorld(), -40.0, -4.0, 10.0);
 
-                    Spawn.zombies(amount + (2 * 1), loc1, loc2, (0.23 + (0.02*1)), (2.0 + (0.2*1)), (20.0 + (2*1)), (0.0 + (0.01*1)), (4.0 + (0.2*1)), (0.0 + (0.01*1)));
+                    Spawn.zombies(amount + (2), loc1, loc2, (0.23 + (0.02*1)), (2.0 + (0.2*1)), (20.0 + (2)), (0.0 + (0.01*1)), (0.0 + (0.01*1)));
 
                 } catch (NumberFormatException e) {
                     sender.sendMessage("Invalid amount specified.");

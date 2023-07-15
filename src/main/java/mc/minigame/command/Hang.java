@@ -13,6 +13,7 @@ public class Hang implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 1) {
             Player player = Bukkit.getPlayer(args[0]);
+            assert player != null;
             player.teleport(Loc.hang);
             player.sendMessage(ChatColor.RED + "Enjoy hanging to death ;)");
         } else {

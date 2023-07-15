@@ -2,7 +2,6 @@ package mc.minigame.variables;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.inventory.EquipmentSlot;
 
 import java.util.Arrays;
 import java.util.List;
@@ -60,80 +59,62 @@ public class Weapons {
     }
 
     public static double calculateDamageAmount(Material weaponType) {
-        switch (weaponType) {
-            case WOODEN_HOE: // Pistol
-                return 6.0;
-            case WOODEN_SHOVEL: // Pistol I
-                return 6.0;
-            case STONE_HOE: // Supreme Pistol
-                return 6.0;
-            case STONE_SHOVEL: // Rifle
-                return 6.0;
-            case SHEARS: // Superb Rifle
-                return 8.0;
-            case IRON_HOE: // Shotgun
-                return 12.0;
-            case IRON_SHOVEL: // Ultimate Shotgun
-                return 16.0;
-            case GOLDEN_HOE: // Rocket Launcher
-                return 7.50;
-            case GOLDEN_SHOVEL: // Supreme Rocket Launcher
-                return 11.0;
-            case GOLDEN_PICKAXE: // Sniper
-                return 20.0;
-            case FLINT_AND_STEEL: // Flamethrower
-                return 2.0;
-            case DIAMOND_HOE: // Venerable Gun
-                return 15.0;
-            case DIAMOND_PICKAXE: // Superb Venerable Gun
-                return 30.0;
-            default:
-                return 0.0;
-        }
+        return switch (weaponType) {
+            case WOODEN_HOE -> // Pistol
+                    6.0;
+            case WOODEN_SHOVEL -> // Pistol I
+                    6.0;
+            case STONE_HOE -> // Supreme Pistol
+                    6.0;
+            case STONE_SHOVEL -> // Rifle
+                    6.0;
+            case SHEARS -> // Superb Rifle
+                    8.0;
+            case IRON_HOE -> // Shotgun
+                    12.0;
+            case IRON_SHOVEL -> // Ultimate Shotgun
+                    16.0;
+            case GOLDEN_HOE -> // Rocket Launcher
+                    7.50;
+            case GOLDEN_SHOVEL -> // Supreme Rocket Launcher
+                    11.0;
+            case GOLDEN_PICKAXE -> // Sniper
+                    20.0;
+            case FLINT_AND_STEEL -> // Flamethrower
+                    2.0;
+            case DIAMOND_HOE -> // Venerable Gun
+                    15.0;
+            case DIAMOND_PICKAXE -> // Superb Venerable Gun
+                    30.0;
+            default -> 0.0;
+        };
     }
 
     public static String getName(Material weaponType) {
-        switch (weaponType) {
-            case WOODEN_HOE:
-                return ChatColor.GREEN + "Pistol";
-            case WOODEN_SHOVEL:
-                return ChatColor.YELLOW + "Pistol I";
-            case STONE_HOE:
-                return ChatColor.GOLD + "Supreme Pistol";
-            case STONE_SHOVEL:
-                return ChatColor.GREEN + "Rifle";
-            case SHEARS:
-                return ChatColor.YELLOW + "Superb Rifle";
-            case IRON_HOE:
-                return ChatColor.RED + "Shotgun";
-            case IRON_SHOVEL:
-                return ChatColor.DARK_RED + "Ultimate Shotgun";
-            case GOLDEN_HOE:
-                return ChatColor.LIGHT_PURPLE + "Rocket Launcher";
-            case GOLDEN_SHOVEL:
-                return ChatColor.DARK_PURPLE + "Supreme Rocket Launcher";
-            case GOLDEN_PICKAXE:
-                return ChatColor.AQUA + "Sniper";
-            case FLINT_AND_STEEL:
-                return ChatColor.RED + "Flamethrower";
-            case DIAMOND_HOE:
-                return ChatColor.BLUE + "Venerable Gun";
-            case DIAMOND_PICKAXE:
-                return ChatColor.DARK_BLUE + "Superb Venerable Gun";
-            default:
-                return ChatColor.GRAY + "Unknown Weapon";
-        }
+        return switch (weaponType) {
+            case WOODEN_HOE -> ChatColor.GREEN + "Pistol";
+            case WOODEN_SHOVEL -> ChatColor.YELLOW + "Pistol I";
+            case STONE_HOE -> ChatColor.GOLD + "Supreme Pistol";
+            case STONE_SHOVEL -> ChatColor.GREEN + "Rifle";
+            case SHEARS -> ChatColor.YELLOW + "Superb Rifle";
+            case IRON_HOE -> ChatColor.RED + "Shotgun";
+            case IRON_SHOVEL -> ChatColor.DARK_RED + "Ultimate Shotgun";
+            case GOLDEN_HOE -> ChatColor.LIGHT_PURPLE + "Rocket Launcher";
+            case GOLDEN_SHOVEL -> ChatColor.DARK_PURPLE + "Supreme Rocket Launcher";
+            case GOLDEN_PICKAXE -> ChatColor.AQUA + "Sniper";
+            case FLINT_AND_STEEL -> ChatColor.RED + "Flamethrower";
+            case DIAMOND_HOE -> ChatColor.BLUE + "Venerable Gun";
+            case DIAMOND_PICKAXE -> ChatColor.DARK_BLUE + "Superb Venerable Gun";
+            default -> ChatColor.GRAY + "Unknown Weapon";
+        };
     }
 
     public static double explosionRadius(Material weaponType){
-        switch (weaponType) {
-            case GOLDEN_HOE:
-                return 2.5;
-            case GOLDEN_SHOVEL:
-                return 5.0;
-            default:
-                return 0.0;
-        }
+        return switch (weaponType) {
+            case GOLDEN_HOE -> 2.5;
+            case GOLDEN_SHOVEL -> 5.0;
+            default -> 0.0;
+        };
     }
 
     public Weapons() {

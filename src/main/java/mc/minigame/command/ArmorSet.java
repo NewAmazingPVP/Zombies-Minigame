@@ -14,9 +14,10 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.*;
-
-import static org.bukkit.inventory.ItemFlag.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
 
 public class ArmorSet implements CommandExecutor {
 
@@ -32,23 +33,22 @@ public class ArmorSet implements CommandExecutor {
                         for (Material stack : LeatherArmor.getLeatherArmorTypes()) {
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
+                            assert meta != null;
                             meta.addEnchant(Enchantment.BINDING_CURSE, 1, true);
                             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS);
                             meta.setDisplayName(ChatColor.BLUE + "Leather Juggernaut");
 
-                            if (meta != null) {
-                                meta.addAttributeModifier(
-                                        Attribute.GENERIC_ARMOR, new AttributeModifier(
-                                                UUID.randomUUID(),
-                                                "generic.armor",
-                                                LeatherArmor.defensePoints(stack),
-                                                AttributeModifier.Operation.ADD_NUMBER,
-                                                LeatherArmor.slot(stack)
-                                        )
-                                );
-                                armor.setItemMeta(meta);
-                                leatherArmorContents.add(armor);
-                            }
+                            meta.addAttributeModifier(
+                                    Attribute.GENERIC_ARMOR, new AttributeModifier(
+                                            UUID.randomUUID(),
+                                            "generic.armor",
+                                            LeatherArmor.defensePoints(stack),
+                                            AttributeModifier.Operation.ADD_NUMBER,
+                                            LeatherArmor.slot(stack)
+                                    )
+                            );
+                            armor.setItemMeta(meta);
+                            leatherArmorContents.add(armor);
                         }
 
                         Player player = (Player) sender;
@@ -59,23 +59,22 @@ public class ArmorSet implements CommandExecutor {
                         for (Material stack : DiamondArmor.getDiamondArmorTypes()) {
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
+                            assert meta != null;
                             meta.addEnchant(Enchantment.BINDING_CURSE, 1, true);
                             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS);
                             meta.setDisplayName(ChatColor.DARK_RED + "Assassin Suit");
 
-                            if (meta != null) {
-                                meta.addAttributeModifier(
-                                        Attribute.GENERIC_ARMOR, new AttributeModifier(
-                                                UUID.randomUUID(),
-                                                "generic.armor",
-                                                DiamondArmor.defensePoints(stack),
-                                                AttributeModifier.Operation.ADD_NUMBER,
-                                                DiamondArmor.slot(stack)
-                                        )
-                                );
-                                armor.setItemMeta(meta);
-                                diamondArmorContents.add(armor);
-                            }
+                            meta.addAttributeModifier(
+                                    Attribute.GENERIC_ARMOR, new AttributeModifier(
+                                            UUID.randomUUID(),
+                                            "generic.armor",
+                                            DiamondArmor.defensePoints(stack),
+                                            AttributeModifier.Operation.ADD_NUMBER,
+                                            DiamondArmor.slot(stack)
+                                    )
+                            );
+                            armor.setItemMeta(meta);
+                            diamondArmorContents.add(armor);
                         }
 
                         Player player = (Player) sender;
@@ -86,24 +85,23 @@ public class ArmorSet implements CommandExecutor {
                         for (Material stack : NetheriteArmor.getNetheriteArmorTypes()) {
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
+                            assert meta != null;
                             meta.addEnchant(Enchantment.BINDING_CURSE, 1, true);
                             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS);
                             meta.setDisplayName(ChatColor.MAGIC + "Netherite Juggernaut");
                             meta.setLore(Collections.singletonList(ChatColor.DARK_PURPLE + "RADIATION PROOF IF FULL SET"));
 
-                            if (meta != null) {
-                                meta.addAttributeModifier(
-                                        Attribute.GENERIC_ARMOR, new AttributeModifier(
-                                                UUID.randomUUID(),
-                                                "generic.armor",
-                                                NetheriteArmor.defensePoints(stack),
-                                                AttributeModifier.Operation.ADD_NUMBER,
-                                                NetheriteArmor.slot(stack)
-                                        )
-                                );
-                                armor.setItemMeta(meta);
-                                netheriteArmorContents.add(armor);
-                            }
+                            meta.addAttributeModifier(
+                                    Attribute.GENERIC_ARMOR, new AttributeModifier(
+                                            UUID.randomUUID(),
+                                            "generic.armor",
+                                            NetheriteArmor.defensePoints(stack),
+                                            AttributeModifier.Operation.ADD_NUMBER,
+                                            NetheriteArmor.slot(stack)
+                                    )
+                            );
+                            armor.setItemMeta(meta);
+                            netheriteArmorContents.add(armor);
                         }
 
                         Player player = (Player) sender;
@@ -114,22 +112,21 @@ public class ArmorSet implements CommandExecutor {
                         for (Material stack : IronArmor.getIronArmorTypes()) {
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
+                            assert meta != null;
                             meta.addEnchant(Enchantment.BINDING_CURSE, 1, true);
                             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS);
                             meta.setDisplayName(ChatColor.GRAY + "Ironman Armor");
-                            if (meta != null) {
-                                meta.addAttributeModifier(
-                                        Attribute.GENERIC_ARMOR, new AttributeModifier(
-                                                UUID.randomUUID(),
-                                                "generic.armor",
-                                                IronArmor.defensePoints(stack),
-                                                AttributeModifier.Operation.ADD_NUMBER,
-                                                IronArmor.slot(stack)
-                                        )
-                                );
-                                armor.setItemMeta(meta);
-                                armorContents.add(armor);
-                            }
+                            meta.addAttributeModifier(
+                                    Attribute.GENERIC_ARMOR, new AttributeModifier(
+                                            UUID.randomUUID(),
+                                            "generic.armor",
+                                            IronArmor.defensePoints(stack),
+                                            AttributeModifier.Operation.ADD_NUMBER,
+                                            IronArmor.slot(stack)
+                                    )
+                            );
+                            armor.setItemMeta(meta);
+                            armorContents.add(armor);
                             Player player = (Player) sender;
                             player.getInventory().setArmorContents(armorContents.toArray(new ItemStack[0]));
                         }
@@ -139,23 +136,22 @@ public class ArmorSet implements CommandExecutor {
                         for (Material stack : GoldenArmor.getGoldenArmorTypes()) {
                             ItemStack armor = new ItemStack(stack);
                             ItemMeta meta = armor.getItemMeta();
+                            assert meta != null;
                             meta.addEnchant(Enchantment.BINDING_CURSE, 1, true);
                             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS);
                             meta.setDisplayName(ChatColor.GOLD + "King's Wear");
 
-                            if (meta != null) {
-                                meta.addAttributeModifier(
-                                        Attribute.GENERIC_ARMOR, new AttributeModifier(
-                                                UUID.randomUUID(),
-                                                "generic.armor",
-                                                GoldenArmor.defensePoints(stack),
-                                                AttributeModifier.Operation.ADD_NUMBER,
-                                                GoldenArmor.slot(stack)
-                                        )
-                                );
-                                armor.setItemMeta(meta);
-                                goldArmorContents.add(armor);
-                            }
+                            meta.addAttributeModifier(
+                                    Attribute.GENERIC_ARMOR, new AttributeModifier(
+                                            UUID.randomUUID(),
+                                            "generic.armor",
+                                            GoldenArmor.defensePoints(stack),
+                                            AttributeModifier.Operation.ADD_NUMBER,
+                                            GoldenArmor.slot(stack)
+                                    )
+                            );
+                            armor.setItemMeta(meta);
+                            goldArmorContents.add(armor);
                         }
 
                         Player player = (Player) sender;
