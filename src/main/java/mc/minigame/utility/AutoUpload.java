@@ -9,6 +9,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
+import java.util.Objects;
 
 import static mc.minigame.Zombies.zombies;
 
@@ -16,8 +17,8 @@ public class AutoUpload {
     private static final String RELEASE_URL = "https://api.github.com/repos/NewAmazingPVP/Zombies-Minigame/releases/latest";
     private static final String API_KEY_FILE_PATH = zombies.getDataFolder().getPath() + File.separator + "api.yml";
     private static String apiKey;
-    private static int currentNumber = 0;
-    private static int releaseNumber;
+    private static String defaultUrl = "https://api.github.com/repos/NewAmazingPVP/Zombies-Minigame/releases/latest";
+    private static String downloadUrl = null;
 
     public static void startReleaseChecker() {
         new BukkitRunnable() {
@@ -29,22 +30,6 @@ public class AutoUpload {
                 }
             }
         }.runTaskTimerAsynchronously(zombies, 0L, 18L);
-    }
-
-    private static synchronized void updateCurrentNumber(int newNumber) {
-        currentNumber = newNumber;
-    }
-
-    private static synchronized int getCurrentNumber() {
-        return currentNumber;
-    }
-
-    private static synchronized void updateReleaseNumber(int newNumber) {
-        releaseNumber = newNumber;
-    }
-
-    private static synchronized int getReleaseNumber() {
-        return releaseNumber;
     }
 
     private static void loadApiKey() {
@@ -75,8 +60,10 @@ public class AutoUpload {
             URL url = new URL(RELEASE_URL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestProperty("Authorization", "Token " + getApiKey());
+            System.out.println("Sent request");
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                System.out.println("Done");
                 InputStream inputStream = connection.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                 StringBuilder response = new StringBuilder();
@@ -89,24 +76,17 @@ public class AutoUpload {
                 ObjectMapper objectMapper = new ObjectMapper();
                 JsonNode node = objectMapper.readTree(response.toString());
 
-                String downloadUrl = null;
                 for (JsonNode asset : node.get("assets")) {
                     if (asset.has("name") && asset.get("name").asText().endsWith(".jar")) {
                         downloadUrl = asset.get("browser_download_url").asText();
                         break;
                     }
                 }
-                for (JsonNode asset : node) {
-                    if (asset.has("tag_name")) {
-                        String tagName = asset.get("tag_name").asText();
-                        String releaseVersion = tagName.replace("v", "");
-                        updateReleaseNumber(Integer.parseInt(releaseVersion));
-                        break;
-                    }
-                }
-                if (getReleaseNumber() > getCurrentNumber() && downloadUrl != null) {
+                System.out.println(downloadUrl);
+                if (!(Objects.equals(downloadUrl, defaultUrl)) && downloadUrl != null) {
+                    System.out.println("Makes sense");
                     zombies.getLogger().info("New plugin release available. Updating plugin...");
-                    updatePlugin(downloadUrl);
+                    updatePlugin(downloadUrl, "Minigame");
                 }
             } else {
                 zombies.getLogger().info("Failed to check for new releases. Response code: " + connection.getResponseCode());
@@ -119,20 +99,20 @@ public class AutoUpload {
         }
     }
 
-    public static void updatePlugin(String link) {
-        String outputFilePath = "plugins/my-plugin.jar";
+    public static void updatePlugin(String link, String fileName) {
+        String outputFilePath = "plugins/" + fileName + ".jar";
 
         try (InputStream in = new URL(link).openStream();
              FileOutputStream out = new FileOutputStream(outputFilePath)) {
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[4096];
             int bytesRead;
             while ((bytesRead = in.read(buffer)) != -1) {
                 out.write(buffer, 0, bytesRead);
             }
-            updateCurrentNumber(getReleaseNumber());
-            zombies.getLogger().info("Plugin updated successfully.");
+            defaultUrl = downloadUrl;
         } catch (IOException e) {
-            zombies.getLogger().info("Failed to download plugin: " + e.getMessage());
+            System.out.println("Failed to download plugin: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
