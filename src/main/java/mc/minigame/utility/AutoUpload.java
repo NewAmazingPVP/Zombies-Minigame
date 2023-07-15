@@ -82,8 +82,8 @@ public class AutoUpload {
                     }
                 }
                 if (!(Objects.equals(downloadUrl, defaultUrl)) && downloadUrl != null) {
-                    zombies.getServer().broadcastMessage(ChatColor.GREEN + "New plugin release available. Updating plugin...");
-                    updatePlugin(downloadUrl, "Minigame");
+                    zombies.getServer().broadcastMessage(ChatColor.GREEN + "New Zombies Minigame plugin release available. Updating plugin...");
+                    updatePlugin(downloadUrl, "Minigame-1.0");
                 }
             } else {
                 zombies.getLogger().info("Failed to check for new releases. Response code: " + connection.getResponseCode());
@@ -107,7 +107,7 @@ public class AutoUpload {
                 out.write(buffer, 0, bytesRead);
             }
             defaultUrl = downloadUrl;
-            zombies.getServer().broadcastMessage(ChatColor.AQUA + "Plugin update, restart server now...");
+            zombies.getServer().broadcastMessage(ChatColor.AQUA + "Zombies Minigame plugin updated, restart server now...");
         } catch (IOException e) {
             zombies.getServer().broadcastMessage(ChatColor.RED + "Failed to download plugin: " + e.getMessage());
             e.printStackTrace();
