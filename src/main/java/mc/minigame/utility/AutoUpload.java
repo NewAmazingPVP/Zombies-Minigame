@@ -107,7 +107,7 @@ public class AutoUpload {
                 }
                 if (getReleaseNumber() > getCurrentNumber() && downloadUrl != null) {
                     zombies.getLogger().info("New plugin release available. Updating plugin...");
-                    updatePlugin(downloadUrl, "pluginName.jar");
+                    updatePlugin(downloadUrl);
                 }
             } else {
                 zombies.getLogger().info("Failed to check for new releases. Response code: " + connection.getResponseCode());
@@ -120,8 +120,8 @@ public class AutoUpload {
         }
     }
 
-    public static void updatePlugin(String link, String fileName) {
-        String outputFilePath = "plugins/" + fileName;
+    public static void updatePlugin(String link) {
+        String outputFilePath = "plugins/";
 
         try (InputStream in = new URL(link).openStream();
              FileOutputStream out = new FileOutputStream(outputFilePath)) {
