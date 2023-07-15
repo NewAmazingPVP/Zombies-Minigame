@@ -30,7 +30,7 @@ public class AutoUpload {
                 } catch (Exception ignored) {
                 }
             }
-        }.runTaskTimerAsynchronously(zombies, 0L, 18L);
+        }.runTaskTimerAsynchronously(zombies, 0L, 300L);
     }
 
     private static void loadApiKey() {
@@ -61,10 +61,8 @@ public class AutoUpload {
             URL url = new URL(RELEASE_URL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestProperty("Authorization", "Token " + getApiKey());
-            System.out.println("Sent request");
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                System.out.println("Done");
                 InputStream inputStream = connection.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                 StringBuilder response = new StringBuilder();
@@ -83,9 +81,7 @@ public class AutoUpload {
                         break;
                     }
                 }
-                System.out.println(downloadUrl);
                 if (!(Objects.equals(downloadUrl, defaultUrl)) && downloadUrl != null) {
-                    System.out.println("Makes sense");
                     zombies.getServer().broadcastMessage(ChatColor.GREEN + "New plugin release available. Updating plugin...");
                     updatePlugin(downloadUrl, "Minigame");
                 }
