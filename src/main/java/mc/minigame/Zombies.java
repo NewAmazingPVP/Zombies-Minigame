@@ -33,6 +33,9 @@ public class Zombies extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        if (!getDataFolder().exists()) {
+            getDataFolder().mkdirs();
+        }
         zombies = this;
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new Shoot(), this);
