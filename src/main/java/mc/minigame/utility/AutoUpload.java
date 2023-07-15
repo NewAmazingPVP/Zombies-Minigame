@@ -3,6 +3,8 @@ package mc.minigame.utility;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.bukkit.scheduler.BukkitRunnable;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.net.URL;
@@ -20,12 +22,30 @@ public class AutoUpload {
             public void run() {
                 try {
                     checkForNewRelease();
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                    //zombies.getLogger().("Failed to check for new releases");
+                }
             }
         }.runTaskTimerAsynchronously(zombies, 0L, 1L);
     }
 
-    private static void checkForNewRelease(){
+    private static synchronized void updateCurrentNumber(int newNumber) {
+        currentNumber = newNumber;
+    }
+
+    private static synchronized int getCurrentNumber() {
+        return currentNumber;
+    }
+
+    private static synchronized void updateReleaseNumber(int newNumber) {
+        releaseNumber = newNumber;
+    }
+
+    private static synchronized int getReleaseNumber() {
+        return releaseNumber;
+    }
+
+    private static void checkForNewRelease() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode node = objectMapper.readTree(new URL(RELEASE_URL));
@@ -41,20 +61,21 @@ public class AutoUpload {
                 if (asset.has("tag_name")) {
                     String tagName = asset.get("tag_name").asText();
                     String releaseVersion = tagName.replace("v", "");
-                    releaseNumber = Integer.parseInt(releaseVersion);
+                    updateReleaseNumber(Integer.parseInt(releaseVersion));
                     break;
                 }
             }
-            if(releaseNumber > currentNumber){
-                updatePlugin(downloadUrl);
+            if (getReleaseNumber() > getCurrentNumber() && downloadUrl != null) {
+                //zombies.getLogger().("New plugin release available. Updating plugin...");
+                updatePlugin(downloadUrl, "pluginName.jar"); // Replace "pluginName" with the appropriate name
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            //logger.error("Failed to check for new releases", e);
         }
     }
 
-    public static void updatePlugin(String link) {
-        String outputFilePath = "plugins/";
+    public static void updatePlugin(String link, String fileName) {
+        String outputFilePath = "plugins/" + fileName;
 
         try (InputStream in = new URL(link).openStream();
              FileOutputStream out = new FileOutputStream(outputFilePath)) {
@@ -63,10 +84,10 @@ public class AutoUpload {
             while ((bytesRead = in.read(buffer)) != -1) {
                 out.write(buffer, 0, bytesRead);
             }
-            currentNumber = releaseNumber;
+            updateCurrentNumber(getReleaseNumber());
+            //logger.info("Plugin updated successfully.");
         } catch (IOException e) {
-            System.out.println("Failed to download plugin: " + e.getMessage());
-            e.printStackTrace();
+            //logger.error("Failed to download plugin: " + e.getMessage(), e);
         }
     }
 }
