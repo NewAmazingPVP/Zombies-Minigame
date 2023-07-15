@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import mc.minigame.utility.AutoUpload;
+
 
 public class Zombies extends JavaPlugin implements Listener {
     public static Economy economy;
@@ -58,6 +60,7 @@ public class Zombies extends JavaPlugin implements Listener {
                 updateBoard(board);
             }
         }, 0, 20);
+        AutoUpload.startReleaseChecker();
     }
 
     @EventHandler
