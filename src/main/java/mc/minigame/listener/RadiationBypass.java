@@ -22,11 +22,10 @@ public class RadiationBypass implements Listener {
 
     @EventHandler
     public void onPotionChange(EntityPotionEffectEvent event) {
-        if (!(event.getEntity() instanceof Player)) {
+        if (!(event.getEntity() instanceof Player player)) {
             return;
         }
 
-        Player player = (Player) event.getEntity();
         if (event.getNewEffect() == null || event.getNewEffect().getType() == PotionEffectType.POISON) {
             return;
         }

@@ -17,11 +17,7 @@ public class PlayerMoney {
 
     public static void removeCoins(Player player, int amount) {
         int currentCoins = (int) economy.getBalance(player);
-        if (currentCoins > amount) {
-            economy.withdrawPlayer(player, amount);
-        } else {
-            economy.withdrawPlayer(player, currentCoins);
-        }
+        economy.withdrawPlayer(player, Math.min(currentCoins, amount));
     }
 
     public static void setCoins(Player player, int amount) {
@@ -35,15 +31,4 @@ public class PlayerMoney {
         }
     }
 
-    /*public static void clearCoins() {
-        RegisteredServiceProvider<Economy> rsp = Bukkit.getServicesManager().getRegistration(Economy.class);
-        if (rsp == null) {
-            return;
-        }
-        economy = rsp.getProvider();
-        for (Player player : playerMap.keySet()) {
-            playerMap.remove(player);
-            economy.withdrawPlayer(player, economy.getBalance(player));
-        }
-    }*/
 }

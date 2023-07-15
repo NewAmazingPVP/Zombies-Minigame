@@ -18,18 +18,13 @@ public class DiamondArmor {
 
 
     public static double defensePoints(Material material) {
-        switch(material) {
-            case DIAMOND_BOOTS:
-                return 2.0;
-            case DIAMOND_HELMET:
-                return 3.0;
-            case DIAMOND_CHESTPLATE:
-                return 6.0;
-            case DIAMOND_LEGGINGS:
-                return 5.0;
-            default:
-                return 0.0;
-        }
+        return switch (material) {
+            case DIAMOND_BOOTS -> 2.0;
+            case DIAMOND_HELMET -> 3.0;
+            case DIAMOND_CHESTPLATE -> 6.0;
+            case DIAMOND_LEGGINGS -> 5.0;
+            default -> 0.0;
+        };
     }
 
     public static EquipmentSlot slot(Material material) {

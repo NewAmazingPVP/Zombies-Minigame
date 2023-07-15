@@ -13,7 +13,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class Spawn extends JavaPlugin {
 
-    public static void zombies(int number, Location loc1, Location loc2, Double movement, Double dmg, Double health, Double reinforce, Double attackSpeed, Double resistance) {
+    public static void zombies(int number, Location loc1, Location loc2, Double movement, Double dmg, Double health, Double reinforce, Double resistance) {
         World world = loc1.getWorld();
 
         double minX = Math.min(loc1.getX(), loc2.getX());

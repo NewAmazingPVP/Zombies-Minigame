@@ -13,9 +13,8 @@ public class Saturation implements Listener {
 
     @EventHandler
     public void onFoodLevelChange(FoodLevelChangeEvent event) {
-        if (event.getEntity() instanceof Player) {
-            Player player = (Player) event.getEntity();
-                event.setCancelled(true);
+        if (event.getEntity() instanceof Player player) {
+            event.setCancelled(true);
                 player.setSaturation(20f);
                 player.setFoodLevel(20);
             }
@@ -23,8 +22,7 @@ public class Saturation implements Listener {
 
     @EventHandler
     public void onEntityRegainHealth(EntityRegainHealthEvent event) {
-        if (event.getEntity() instanceof Player) {
-            Player player = (Player) event.getEntity();
+        if (event.getEntity() instanceof Player player) {
             if (event.getRegainReason() == EntityRegainHealthEvent.RegainReason.SATIATED) {
                 event.setCancelled(true);
 

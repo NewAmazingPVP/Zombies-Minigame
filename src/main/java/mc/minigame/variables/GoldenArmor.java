@@ -33,18 +33,13 @@ public class GoldenArmor {
     }
 
     public static EquipmentSlot slot(Material material) {
-        switch(material) {
-            case GOLDEN_BOOTS:
-                return EquipmentSlot.FEET;
-            case GOLDEN_HELMET:
-                return EquipmentSlot.HEAD;
-            case GOLDEN_CHESTPLATE:
-                return EquipmentSlot.CHEST;
-            case GOLDEN_LEGGINGS:
-                return EquipmentSlot.LEGS;
-            default:
-                return null;
-        }
+        return switch (material) {
+            case GOLDEN_BOOTS -> EquipmentSlot.FEET;
+            case GOLDEN_HELMET -> EquipmentSlot.HEAD;
+            case GOLDEN_CHESTPLATE -> EquipmentSlot.CHEST;
+            case GOLDEN_LEGGINGS -> EquipmentSlot.LEGS;
+            default -> null;
+        };
     }
 
 }

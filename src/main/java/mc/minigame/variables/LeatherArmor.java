@@ -19,32 +19,22 @@ public class LeatherArmor {
 
 
     public static double defensePoints(Material material) {
-        switch(material) {
-            case LEATHER_BOOTS:
-                return 1.0;
-            case LEATHER_HELMET:
-                return 1.0;
-            case LEATHER_CHESTPLATE:
-                return 1.0;
-            case LEATHER_LEGGINGS:
-                return 1.0;
-            default:
-                return 0.0;
-        }
+        return switch (material) {
+            case LEATHER_BOOTS -> 1.0;
+            case LEATHER_HELMET -> 1.0;
+            case LEATHER_CHESTPLATE -> 1.0;
+            case LEATHER_LEGGINGS -> 1.0;
+            default -> 0.0;
+        };
     }
 
     public static EquipmentSlot slot(Material material) {
-        switch(material) {
-            case LEATHER_BOOTS:
-                return EquipmentSlot.FEET;
-            case LEATHER_HELMET:
-                return EquipmentSlot.HEAD;
-            case LEATHER_CHESTPLATE:
-                return EquipmentSlot.CHEST;
-            case LEATHER_LEGGINGS:
-                return EquipmentSlot.LEGS;
-            default:
-                return null;
-        }
+        return switch (material) {
+            case LEATHER_BOOTS -> EquipmentSlot.FEET;
+            case LEATHER_HELMET -> EquipmentSlot.HEAD;
+            case LEATHER_CHESTPLATE -> EquipmentSlot.CHEST;
+            case LEATHER_LEGGINGS -> EquipmentSlot.LEGS;
+            default -> null;
+        };
     }
 }

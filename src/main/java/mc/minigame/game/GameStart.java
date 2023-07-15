@@ -3,7 +3,6 @@ package mc.minigame.game;
 import mc.minigame.variables.Loc;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.GameMode;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

@@ -6,7 +6,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ZombieCount {
     public static int getTotalZombieCount() {

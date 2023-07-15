@@ -4,16 +4,15 @@ import mc.minigame.game.PlayerMoney;
 import mc.minigame.game.Rounds;
 import mc.minigame.variables.Loc;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.AnimalTamer;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.*;
+import org.bukkit.event.player.PlayerItemDamageEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 
 import java.util.HashSet;
 
