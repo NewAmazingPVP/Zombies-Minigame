@@ -120,7 +120,7 @@ public class AutoUpload {
     }
 
     public static void updatePlugin(String link) {
-        String outputFilePath = "plugins/";
+        String outputFilePath = "plugins/my-plugin.jar";
 
         try (InputStream in = new URL(link).openStream();
              FileOutputStream out = new FileOutputStream(outputFilePath)) {
