@@ -25,8 +25,7 @@ public class AutoUpload {
             public void run() {
                 try {
                     checkForNewRelease();
-                } catch (Exception e) {
-                    zombies.getLogger().info("Failed to check for new releases");
+                } catch (Exception ignored) {
                 }
             }
         }.runTaskTimerAsynchronously(zombies, 0L, 18L);
