@@ -2,6 +2,7 @@ package mc.minigame.command;
 
 import mc.minigame.variables.*;
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
@@ -13,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,11 +34,12 @@ public class ArmorSet implements CommandExecutor {
 
                         for (Material stack : LeatherArmor.getLeatherArmorTypes()) {
                             ItemStack armor = new ItemStack(stack);
-                            ItemMeta meta = armor.getItemMeta();
+                            LeatherArmorMeta meta = (LeatherArmorMeta) armor.getItemMeta();
                             assert meta != null;
                             meta.addEnchant(Enchantment.BINDING_CURSE, 1, true);
                             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS);
                             meta.setDisplayName(ChatColor.BLUE + "Leather Juggernaut");
+                            meta.setColor(Color.fromRGB(0, 4, 255));
 
                             meta.addAttributeModifier(
                                     Attribute.GENERIC_ARMOR, new AttributeModifier(
