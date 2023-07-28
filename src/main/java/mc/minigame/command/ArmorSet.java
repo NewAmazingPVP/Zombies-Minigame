@@ -38,7 +38,7 @@ public class ArmorSet implements CommandExecutor {
                             assert meta != null;
                             meta.addEnchant(Enchantment.BINDING_CURSE, 1, true);
                             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS);
-                            meta.setDisplayName(ChatColor.BLUE + "Leather Juggernaut");
+                            meta.setDisplayName(ChatColor.BLUE + "Lapis Armor");
                             meta.setColor(Color.fromRGB(0, 4, 255));
 
                             meta.addAttributeModifier(
