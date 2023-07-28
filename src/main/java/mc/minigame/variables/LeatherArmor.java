@@ -20,10 +20,10 @@ public class LeatherArmor {
 
     public static double defensePoints(Material material) {
         return switch (material) {
-            case LEATHER_BOOTS -> 1.0;
-            case LEATHER_HELMET -> 1.0;
-            case LEATHER_CHESTPLATE -> 1.0;
-            case LEATHER_LEGGINGS -> 1.0;
+            case LEATHER_BOOTS -> 60.0;
+            case LEATHER_HELMET -> 60.0;
+            case LEATHER_CHESTPLATE -> 60.0;
+            case LEATHER_LEGGINGS -> 60.0;
             default -> 0.0;
         };
     }
